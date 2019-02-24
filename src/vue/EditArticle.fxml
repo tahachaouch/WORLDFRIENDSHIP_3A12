@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="tab" minHeight="-Infinity" minWidth="-Infinity" prefHeight="843.0" prefWidth="1416.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.EditArticleController">
+   <children>
+      <JFXButton fx:id="rjaime" layoutX="924.0" layoutY="658.0" onAction="#likeAction" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: bcbcbc; -fx-text-fill: #ff214f; -fx-font-size: 14;" text="J'aime">
+         <graphic>
+            <FontAwesomeIconView fill="#ff214f" glyphName="THUMBS_UP" size="14" wrappingWidth="18.0" />
+         </graphic>
+      </JFXButton>
+      <FontAwesomeIconView fill="#ff214f" glyphName="THUMBS_UP" layoutX="1085.0" layoutY="681.0" size="16" text="" />
+      <TextField layoutX="1047.0" layoutY="662.0" prefHeight="25.0" prefWidth="30.0" />
+      <Label layoutX="970.0" layoutY="614.0" prefHeight="31.0" prefWidth="131.0" text="Nom Auteur" textFill="#907d7d">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtcree" layoutX="433.0" layoutY="195.0" prefHeight="32.0" prefWidth="162.0" text="Date Article" textFill="#907d7d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="-7.0" layoutY="-11.0" prefHeight="86.0" prefWidth="1431.0" style="-fx-background-color: rgba(0,0,0,.9);">
+         <children>
+            <Label layoutX="556.0" layoutY="18.0" prefHeight="35.0" prefWidth="360.0" text="WorldFriendShip" textFill="#9a1937">
+               <font>
+                  <Font name="Comic Sans MS" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <JFXHamburger fx:id="affmenu" layoutX="1231.0" layoutY="122.0" prefHeight="40.0" prefWidth="68.0" />
+      <Label layoutX="414.0" layoutY="197.0" prefHeight="25.0" prefWidth="28.0" text="Le" textFill="#907d7d">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXDrawer fx:id="menu" defaultDrawerSize="225.0" layoutY="14.0" prefHeight="624.0" prefWidth="200.0" />
+      <Label fx:id="idd" layoutX="256.0" layoutY="122.0" visible="false" />
+      <Button fx:id="edit" layoutX="648.0" layoutY="646.0" mnemonicParsing="false" onAction="#edit" text="edit" />
+      <TextField fx:id="txtitre" layoutX="428.0" layoutY="238.0" prefHeight="52.0" prefWidth="581.0" />
+      <TextArea fx:id="txtblog" layoutX="740.0" layoutY="307.0" prefHeight="254.0" prefWidth="270.0" />
+      <TextField fx:id="txttags" layoutX="740.0" layoutY="572.0" prefHeight="40.0" prefWidth="270.0" />
+      <ImageView fx:id="txtimage" fitHeight="261.0" fitWidth="282.0" layoutX="428.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true" />
+      <FontAwesomeIconView fx:id="image1" glyphName="PLUS" layoutX="558.0" layoutY="444.0" onMouseClicked="#addImage" size="30" text="" wrappingWidth="22.85714340209961" />
+   </children>
+</AnchorPane>
