@@ -110,7 +110,7 @@ public class DivEVENTController implements Initializable {
                 
                 
                 ss.show();
-                
+               
        
 
             } catch (IOException ex) {
@@ -119,6 +119,7 @@ public class DivEVENTController implements Initializable {
         }
    }
 }
+/////////// TEST
   
 
 
