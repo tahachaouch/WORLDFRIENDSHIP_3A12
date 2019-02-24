@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="361.0" prefWidth="437.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldfriendship.Views.DivListEventController">
+   <children>
+      <ImageView fx:id="image" fitHeight="166.0" fitWidth="214.0" layoutX="20.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXTimePicker fx:id="timepub" layoutX="291.0" layoutY="25.0" prefHeight="25.0" prefWidth="91.0" />
+      <DatePicker fx:id="datepub" layoutX="282.0" layoutY="65.0" prefHeight="25.0" prefWidth="109.0" />
+      <Label fx:id="title" layoutX="50.0" layoutY="195.0" prefHeight="17.0" prefWidth="83.0" text="title">
+         <font>
+            <Font name="Bodoni MT Poster Compressed" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="desc" alignment="TOP_LEFT" layoutX="40.0" layoutY="232.0" prefHeight="73.0" prefWidth="357.0" text="description" textFill="#0d03038a" />
+      <FontAwesomeIconView fill="#d65aab" glyphName="COMMENTS" layoutX="382.0" layoutY="336.0" size="20" wrappingWidth="19.0" />
+      <Label fx:id="nbrcm" layoutX="367.0" layoutY="321.0" text="n" />
+      <Label fx:id="nbrjm" layoutX="322.0" layoutY="321.0" text="n" />
+      <FontAwesomeIconView fill="#d65aab" glyphName="THUMBS_UP" layoutX="343.0" layoutY="336.0" size="17" text="" />
+      <FontAwesomeIconView fill="#d65aab" glyphName="EYE" layoutX="291.0" layoutY="335.0" size="17" />
+      <Label fx:id="nbrv" layoutX="275.0" layoutY="321.0" text="n" />
+   </children>
+</AnchorPane>
