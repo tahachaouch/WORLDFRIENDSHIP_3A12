@@ -6,8 +6,6 @@
 package vue;
 
 import controller.HomePageController;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Article;
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +23,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -36,7 +33,11 @@ import javafx.stage.Stage;
  *
  * @author ASUS
  */
-public class DivArticleController implements Initializable {
+public class DivArticleAdminController implements Initializable {
+
+
+
+
 
     @FXML
     private AnchorPane ap;
@@ -91,11 +92,11 @@ public void LoadValues(Article e) throws IOException {
  public void doubleclick(MouseEvent event, Article selectedetab) throws SQLException {
        if (event.getClickCount() == 2) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/ShowArticle.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/ShowArticleAdmin.fxml"));
                 Parent root = loader.load();
-               ShowArticleController DDC = loader.getController();
+               ShowArticleAdminController DDC = loader.getController();
             // DDC.(selectedetab);
-              DDC.ShowArticle(selectedetab.getId());
+              DDC.ShowArticleAdmin(selectedetab.getId());
                 FXMLLoader loade = new FXMLLoader(getClass().getResource("/vue/HomePage.fxml"));
                 Parent roo = loade.load();
                 HomePageController Dhp = loade.getController();

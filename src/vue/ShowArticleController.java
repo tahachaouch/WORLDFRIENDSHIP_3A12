@@ -108,27 +108,6 @@ public static int i;
     public void initialize(URL url, ResourceBundle rb) {
    
      try {
-         /*  try {
-         
-         AffichageAjout aff;
-         Article a=new Article();
-         try {
-         aff = new AffichageAjout();
-         a=aff.getelement("85");
-         // ObservableList<Article> myList=aff.afficherService();
-         } catch (SQLException ex) {
-         Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         // txtcree.(a.getCree());
-         txtitre.setText(a.getTitre_article());
-         txtblog.setText(a.getBlog());
-         txttags.setText(a.getTags());
-         Image imageURI2 = new Image("file:C:/wamp64/www/Images/" + a.getImage());
-         txtimage.setFill(new ImagePattern(imageURI2));
-         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-         String txtdate = df.format(a.getCree());
-         txtcree.setText(txtdate);*/
-         ////////////////////////////////////////////////////////////////////////////////////////////////
          AnchorPane anchrone = FXMLLoader.load(getClass().getResource("/vue/test.fxml"));
          menu.setSidePane(anchrone);
          
@@ -149,10 +128,7 @@ public static int i;
              }
          }
          );
-         /*  } catch (IOException ex) {
-         Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         */
+       
      } catch (IOException ex) {
          Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
      }
