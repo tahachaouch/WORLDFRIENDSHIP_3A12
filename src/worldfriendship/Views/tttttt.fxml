@@ -37,9 +37,9 @@
                   <AnchorPane fx:id="mainAP" focusTraversable="true" prefHeight="711.0" prefWidth="1177.0">
                      <children>
                         <JFXHamburger fx:id="affmenu" layoutX="300.0" layoutY="1.0" />
-                        <JFXTabPane layoutX="391.0" layoutY="1.0" prefHeight="708.0" prefWidth="634.0">
+                        <JFXTabPane fx:id="tab" layoutX="391.0" layoutY="1.0" prefHeight="708.0" prefWidth="634.0">
                            <tabs>
-                              <Tab text="Evènement">
+                              <Tab fx:id="tabY" text="Evènement">
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -90,7 +90,7 @@
                                                          </font>
                                                       </JFXTextArea>
                                                       <FontAwesomeIconView glyphName="EDIT" layoutX="19.0" layoutY="515.0" size="20" />
-                                                      <JFXButton fx:id="AddReview" layoutX="432.0" layoutY="563.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: ff214f; -fx-text-fill: white;" text="Commenter">
+                                                      <JFXButton fx:id="AddReview" layoutX="432.0" layoutY="563.0" onAction="#addReview" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: ff214f; -fx-text-fill: white;" text="Commenter">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -103,9 +103,16 @@
                                     </AnchorPane>
                                 </content>
                               </Tab>
-                              <Tab fx:id="tabX" text="Commentaires">
+                              <Tab fx:id="tabX" onSelectionChanged="#Reviewslist" text="Commentaires">
                                 <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <ScrollPane fx:id="comments" layoutX="27.0" prefHeight="527.0" prefWidth="606.0">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="617.0" />
+                                            </content>
+                                          </ScrollPane>
+                                       </children></AnchorPane>
                                 </content>
                               </Tab>
                            </tabs>

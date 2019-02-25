@@ -8,6 +8,7 @@ package worldfriendship.Views;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextArea;
 import java.io.IOException;
 import java.net.URL;
@@ -16,10 +17,12 @@ import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,13 +33,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import worldfriendship.Controllers.DivReviewController;
 import worldfriendship.Entities.Event;
+import worldfriendship.Entities.Review;
 import worldfriendship.Services.EventService;
+import worldfriendship.Services.GReviews;
 
 /**
  * FXML Controller class
@@ -152,24 +160,28 @@ public class TtttttController implements Initializable {
     private JFXButton AddReview;
     @FXML
     private Tab tabX;
+    private ObservableList<Review> listreview;
+    @FXML
+    private JFXTabPane tab;
+    @FXML
+    private ScrollPane comments;
+    @FXML
+    private Tab tabY;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   
-           // EventService eventService = new EventService();
-            
-             // Event newEvent = eventService.afficherEventById(Integer.parseInt(idd.getText().toString()));
-            //  System.out.println(newEvent.getTitle_event());
-              
-
+       
     }    
 
   
 
   public void ShowEvent(int id) throws SQLException {
       //System.out.println(id);
+      
+        tab.getSelectionModel().select(tabY);
                EventService es=new EventService();
         newEvent = new Event(); 
         
@@ -190,9 +202,9 @@ public class TtttttController implements Initializable {
             endD.setText(sdf1.format(newEvent.getEnddateevent()));
 
             Image imageURI = new Image("file:C:/wamp64/www/images/" + newEvent.getImage_Event());
-       image.setFill(new ImagePattern(imageURI));
-      
-         
+            image.setFill(new ImagePattern(imageURI));
+            Reviewslist(newEvent);
+            
        
                 
 
@@ -231,7 +243,66 @@ public class TtttttController implements Initializable {
                         ds.oldValues(s.getId_event());
                         stage.show();
     }
+    
+    public void Reviewslist(Event e) throws SQLException{
+         TilePane b = new TilePane();
+        tab.getSelectionModel().select(tabX);
+        b.setPadding(new javafx.geometry.Insets(30));
+        TilePane c = new TilePane();
+
+        GReviews gr = new GReviews();
+        listreview = gr.ListReviews(e);
+        
+        for (Review d : listreview) {
+
+            try {
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/DivReview.fxml"));
+                Parent root = (Pane) loader.load();
+                DivReviewController DHC = loader.getController();
+                DHC.LoadValues(d,e);
+
+                //   c.setVgap(40);
+                c.getChildren().removeAll();
+
+                c.getChildren().add(root);
+            } catch (IOException ex) {
+                Logger.getLogger(TtttttController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        c.setPrefColumns(1);
+        c.setPadding(new javafx.geometry.Insets(0));
+        c.setHgap(25);
+        c.setVgap(50);
+        b.getChildren().add(c);
+        b.setPrefWidth(1000);
+        comments.setContent(b);
+      //  scroll.getChildren().add(b);
+        
+
     }
+
+    @FXML
+    private void addReview(ActionEvent event) throws SQLException {
+        GReviews greviews = new GReviews();
+        Review r = new Review();
+        r.setCmt(comment.getText());
+        r.setId_event(newEvent);
+        java.util.Date date_util = new java.util.Date();
+        java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
+        r.setDate(date_sql);
+        greviews.addReview(r);
+        Reviewslist(newEvent);
+        
+    }
+
+    @FXML
+    private void Reviewslist(javafx.event.Event event) throws SQLException {
+   
+        
+    }
+    }
+    
 
  
 

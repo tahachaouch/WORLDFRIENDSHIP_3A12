@@ -5,6 +5,7 @@
  */
 package worldfriendship.Entities;
 
+
 import java.sql.Date;
 
 /**
@@ -16,6 +17,7 @@ public class Review {
     private String cmt;
     private Date date;
     private Event id_event;
+    private fos_user iduser;
 
     public Review() {
     }
@@ -25,6 +27,22 @@ public class Review {
         this.date = date;
         this.id_event = id_event;
     }
+
+    public Review(String cmt, Date date, Event id_event, fos_user iduser) {
+        this.cmt = cmt;
+        this.date = date;
+        this.id_event = id_event;
+        this.iduser = iduser;
+    }
+
+    public fos_user getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(fos_user iduser) {
+        this.iduser = iduser;
+    }
+    
 
     public int getIdCmt() {
         return idCmt;

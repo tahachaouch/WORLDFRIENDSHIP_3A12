@@ -4,11 +4,13 @@
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -17,9 +19,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1187.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldfriendship.Views.TtttttController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="821.0" prefWidth="1187.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="worldfriendship.Views.TtttttController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="home" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1179.0">
+      <AnchorPane id="AnchorPane" fx:id="home" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="813.0" prefWidth="1179.0">
          <children>
             <AnchorPane prefHeight="86.0" prefWidth="1178.0" style="-fx-background-color: rgba(0,0,0,.9);">
                <children>
@@ -30,52 +32,91 @@
                   </Label>
                </children>
             </AnchorPane>
-            <ScrollPane fx:id="scrollHomePage" layoutY="86.0" prefHeight="618.0" prefWidth="1178.0" style="-fx-background-color: white;">
+            <ScrollPane fx:id="scrollHomePage" layoutY="86.0" prefHeight="726.0" prefWidth="1178.0" style="-fx-background-color: white;">
                <content>
-                  <AnchorPane fx:id="mainAP" focusTraversable="true" prefHeight="649.0" prefWidth="1177.0">
+                  <AnchorPane fx:id="mainAP" focusTraversable="true" prefHeight="711.0" prefWidth="1177.0">
                      <children>
                         <JFXHamburger fx:id="affmenu" layoutX="300.0" layoutY="1.0" />
-                        <ScrollPane layoutX="404.0" layoutY="21.0" prefHeight="561.0" prefWidth="624.0">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="556.0" prefWidth="617.0">
-                                 <children>
-                                    <Button fx:id="Edit" layoutX="370.0" layoutY="493.0" mnemonicParsing="false" onAction="#modifierEvent" text="Edit" textFill="#9a1937" />
-                                    <Label fx:id="title" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="14.0" layoutY="229.0" prefHeight="17.0" prefWidth="176.0" text="titre" textAlignment="CENTER" textFill="#ff7ed0">
-                                       <font>
-                                          <Font name="System Bold" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="adresseH" layoutX="413.0" layoutY="385.0" text="adresse hébergement" />
-                                    <Button fx:id="delete" layoutX="441.0" layoutY="493.0" mnemonicParsing="false" onAction="#deleteEvent" text="Remove" textFill="#9a1937" />
-                                    <Label fx:id="endD" layoutX="204.0" layoutY="377.0" text="date fin" />
-                                    <Label fx:id="startD" layoutX="55.0" layoutY="377.0" text="date début" />
-                                    <Label fx:id="typeH" layoutX="414.0" layoutY="349.0" text="type hébergement" />
-                                    <Label fx:id="nbrplace" layoutX="396.0" layoutY="449.0" text="nombre de places">
-                                       <font>
-                                          <Font name="System Bold" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="typeE" layoutX="419.0" layoutY="294.0" text="Type évenement" />
-                                    <Label fx:id="adresseE" layoutX="412.0" layoutY="321.0" text="adresse évenement" />
-                                    <Label fx:id="discription" alignment="TOP_LEFT" layoutX="43.0" layoutY="264.0" prefHeight="78.0" prefWidth="219.0" text="description" />
-                                    <Line endX="100.0" endY="9.0" layoutX="234.0" layoutY="439.0" startX="100.0" startY="-173.0" stroke="#222121" strokeWidth="0.3" />
-                                    <Label layoutX="31.0" layoutY="377.0" text="DE" textFill="#5f6bf1">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="127.0" layoutY="377.0" text="JUSQU'A" textFill="#5f6bf1">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <JFXTabPane layoutX="76.0" layoutY="405.0" prefHeight="113.0" prefWidth="186.0" />
-                                    <Label fx:id="idd" layoutX="27.0" layoutY="426.0" visible="false" />
-                                    <Rectangle fx:id="image" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f530" height="220.0" stroke="BLACK" strokeType="INSIDE" width="617.0" />
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </ScrollPane>
+                        <JFXTabPane fx:id="tab" layoutX="391.0" layoutY="1.0" prefHeight="708.0" prefWidth="634.0">
+                           <tabs>
+                              <Tab fx:id="tabY" text="Evènement">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <ScrollPane prefHeight="666.0" prefWidth="624.0">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="617.0">
+                                                   <children>
+                                                      <Button fx:id="Edit" layoutX="37.0" layoutY="615.0" mnemonicParsing="false" onAction="#modifierEvent" text="Edit" textFill="#9a1937" />
+                                                      <Label fx:id="title" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="14.0" layoutY="229.0" prefHeight="17.0" prefWidth="176.0" text="titre" textAlignment="CENTER" textFill="#ff7ed0">
+                                                         <font>
+                                                            <Font name="System Bold" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="adresseH" layoutX="413.0" layoutY="385.0" text="adresse hébergement" />
+                                                      <Button fx:id="delete" layoutX="98.0" layoutY="615.0" mnemonicParsing="false" onAction="#deleteEvent" text="Remove" textFill="#9a1937" />
+                                                      <Label fx:id="endD" layoutX="204.0" layoutY="377.0" text="date fin" />
+                                                      <Label fx:id="startD" layoutX="55.0" layoutY="377.0" text="date début" />
+                                                      <Label fx:id="typeH" layoutX="414.0" layoutY="349.0" text="type hébergement" />
+                                                      <Label fx:id="nbrplace" layoutX="396.0" layoutY="449.0" text="nombre de places">
+                                                         <font>
+                                                            <Font name="System Bold" size="16.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="typeE" layoutX="404.0" layoutY="282.0" text="Type évenement">
+                                                         <font>
+                                                            <Font name="System Bold" size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="adresseE" layoutX="412.0" layoutY="321.0" text="adresse évenement" />
+                                                      <Label fx:id="discription" alignment="TOP_LEFT" layoutX="43.0" layoutY="264.0" prefHeight="95.0" prefWidth="219.0" text="description" />
+                                                      <Line endX="100.0" endY="9.0" layoutX="234.0" layoutY="439.0" startX="100.0" startY="-173.0" stroke="#222121" strokeWidth="0.3" />
+                                                      <Label layoutX="31.0" layoutY="377.0" text="DE" textFill="#5f6bf1">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="127.0" layoutY="377.0" text="JUSQU'A" textFill="#5f6bf1">
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTabPane layoutX="76.0" layoutY="405.0" prefHeight="113.0" prefWidth="186.0" />
+                                                      <Label fx:id="idd" layoutX="27.0" layoutY="426.0" visible="false" />
+                                                      <Rectangle fx:id="image" arcHeight="5.0" arcWidth="5.0" fill="#f5f5f530" height="220.0" stroke="BLACK" strokeType="INSIDE" width="617.0" />
+                                                      <JFXTextArea fx:id="comment" layoutX="41.0" layoutY="493.0" prefHeight="97.0" prefWidth="367.0" promptText="Tapez votre commentaire...">
+                                                         <font>
+                                                            <Font size="13.0" />
+                                                         </font>
+                                                      </JFXTextArea>
+                                                      <FontAwesomeIconView glyphName="EDIT" layoutX="19.0" layoutY="515.0" size="20" />
+                                                      <JFXButton fx:id="AddReview" layoutX="432.0" layoutY="563.0" onAction="#addReview" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: ff214f; -fx-text-fill: white;" text="Commenter">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </JFXButton>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab fx:id="tabX" onSelectionChanged="#Reviewslist" text="Commentaires">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <ScrollPane fx:id="comments" layoutX="27.0" prefHeight="527.0" prefWidth="606.0">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="617.0" />
+                                            </content>
+                                          </ScrollPane>
+                                       </children></AnchorPane>
+                                </content>
+                              </Tab>
+                           </tabs>
+                        </JFXTabPane>
                      </children>
                   </AnchorPane>
                </content>
