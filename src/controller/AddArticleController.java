@@ -43,8 +43,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javax.imageio.ImageIO;
 import org.apache.commons.lang3.RandomStringUtils;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 import vue.ListArticlesController;
 
 /**
@@ -126,7 +130,9 @@ public class AddArticleController implements Initializable {
  a.setTags(tags);
  a.setBlog(blog);
  a.setTitre_article(titre_article);
-
+TrayNotification tray= new TrayNotification("Information","Article Ajouté", NotificationType.SUCCESS);
+tray.setAnimationType(AnimationType.POPUP);
+tray.showAndDismiss(Duration.seconds(3));
  AffichageAjout af=new AffichageAjout();
  af.ajouterService(a);
      

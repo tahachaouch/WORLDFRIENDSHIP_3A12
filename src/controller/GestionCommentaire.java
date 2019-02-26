@@ -8,6 +8,7 @@ package controller;
 import connexion.conDB;
 import entities.Article;
 import entities.CommentaireARTICLE;
+import entities.LikeCommentaire;
 
   import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -102,5 +103,14 @@ public class GestionCommentaire {
         ste.setInt(2, id2);
         ste.executeUpdate();
     }
-
+public void AddLike (LikeCommentaire R) throws SQLException
+    {
+        String requete
+                    = "INSERT INTO likes ( id_user, id_commentaire) VALUES (?,?)";
+        PreparedStatement st = cnx.prepareStatement(requete);
+            st.setInt(1, R.getId_user().getId());
+            st.setInt(2, R.getId_commentaire().getId());
+            
+         st.executeUpdate();
+        }
 }

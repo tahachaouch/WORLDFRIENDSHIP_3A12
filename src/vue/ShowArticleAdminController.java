@@ -36,6 +36,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -75,12 +79,15 @@ public class ShowArticleAdminController implements Initializable {
     @FXML
     private void DeleteArticle(MouseEvent event) throws SQLException {
      
-     
+ 
  AffichageAjout af=new AffichageAjout();
  af.delete(idd.getText());
- Stage stage = (Stage) trash.getScene().getWindow();
+     TrayNotification tray= new TrayNotification("Information","Article Supprimé", NotificationType.SUCCESS);
+tray.setAnimationType(AnimationType.POPUP);
+tray.showAndDismiss(Duration.seconds(3));
+/* Stage stage = (Stage) trash.getScene().getWindow();
      
-        stage.close();
+        stage.close();*/
     }
 
 

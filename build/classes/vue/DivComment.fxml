@@ -40,15 +40,10 @@
          </children>
       </Pane>
       <Circle fx:id="rcircle" fill="#e5e8eb" layoutX="64.0" layoutY="48.0" radius="46.0" stroke="#c3c3c3" strokeType="INSIDE" />
-      <Label fx:id="rtitre" layoutX="36.0" layoutY="93.0" text="Magnifique" textFill="#ff214f">
-         <font>
-            <Font name="System Bold" size="21.0" />
-         </font>
-      </Label>
       <Label fx:id="rcom" layoutX="19.0" layoutY="122.0" prefHeight="76.0" prefWidth="517.0" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" wrapText="true" />
       <Label fx:id="id" layoutX="343.0" layoutY="28.0" visible="false" />
       <Label fx:id="rdate" layoutX="167.0" layoutY="52.0" text="Membre depuis Janvier 2017" textFill="#73839c" />
       <FontAwesomeIconView fx:id="trash" fill="RED" glyphName="TRASH" layoutX="525.0" layoutY="38.0" size="30" />
-      <Label fx:id="daterev" layoutX="424.0" layoutY="100.0" text="Label" textFill="#73839c" />
+      <Label fx:id="daterev" layoutX="424.0" layoutY="100.0" text="Label" textFill="#73839c" visible="false" />
    </children>
 </AnchorPane>
