@@ -43,7 +43,7 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ScrollPane prefHeight="666.0" prefWidth="624.0">
+                                          <ScrollPane prefHeight="666.0" prefWidth="635.0">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="666.0" prefWidth="617.0">
                                                    <children>
@@ -95,6 +95,16 @@
                                                             <Font size="15.0" />
                                                          </font>
                                                       </JFXButton>
+                                                      <Label fx:id="datecrea" layoutX="476.0" layoutY="229.0" prefHeight="25.0" prefWidth="104.0" text="01/01/2000">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label layoutX="412.0" layoutY="233.0" prefHeight="14.0" prefWidth="59.0" text="Publié le" textFill="#5099c9">
+                                                         <font>
+                                                            <Font name="Bell MT" size="15.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
                                              </content>
@@ -107,7 +117,7 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ScrollPane fx:id="comments" layoutX="27.0" prefHeight="527.0" prefWidth="606.0">
+                                          <ScrollPane fx:id="comments" layoutX="1.0" prefHeight="527.0" prefWidth="632.0">
                                             <content>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="617.0" />
                                             </content>

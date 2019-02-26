@@ -35,7 +35,7 @@ public class EventService {
             //  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
           
             String requete
-                    = "INSERT INTO event (iduser,nbrplace_event ,type_event,title_event ,description_event,startdateevent,enddateevent,image_Event,adresse_Event,type_hebergement,adressehebergement ) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                    = "INSERT INTO event (iduser,nbrplace_event ,type_event,title_event ,description_event,startdateevent,enddateevent,image_Event,adresse_Event,type_hebergement,adressehebergement,datepub ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement st = cn.prepareStatement(requete);
             st.setInt(1,1);
             st.setInt(2, event.getNbrplace_event());
@@ -48,6 +48,7 @@ public class EventService {
             st.setString(9, event.getAdresse_Event());
             st.setString(10, event.getType_hebergement());
             st.setString(11, event.getAdressehebergement());
+            st.setDate(12, date_sql);
             
             st.executeUpdate();
             System.out.println("event ajoutée");
@@ -90,7 +91,7 @@ public class EventService {
         { 
            ObservableList<Event> myL = FXCollections.observableArrayList();
          
-            String requete ="SELECT `id_event`, `nbrplace_event`, `type_event`, `title_event`, `description_event`, `startdateevent`, `enddateevent`, `image_Event`, `adresse_Event`, `type_hebergement`, `adressehebergement` FROM `event` ";
+            String requete ="SELECT `id_event`, `nbrplace_event`, `type_event`, `title_event`, `description_event`, `startdateevent`, `enddateevent`, `image_Event`, `adresse_Event`, `type_hebergement`, `adressehebergement`, `datepub` FROM `event` ";
 
               PreparedStatement st = cn.prepareStatement(requete);
              ResultSet rs = st.executeQuery();
@@ -108,6 +109,7 @@ public class EventService {
                     event.setType_event(rs.getString("type_Event"));
                     event.setImage_Event(rs.getString("image_Event"));
                     event.setTitle_event(rs.getString("title_event"));
+                    event.setDatepub(rs.getDate("datepub"));
                     
                     myL.add(event);}
              
@@ -151,6 +153,38 @@ public class EventService {
         System.out.println("event modifié");
 
     }
+
+    public ObservableList<Event> EventTrieDate() throws SQLException{
+      ObservableList<Event> myL = FXCollections.observableArrayList();
+           //  Statement st= cn.createStatement();
+            String requete = "select `id_event`, `nbrplace_event`, `type_event`, `title_event`, `description_event`, `startdateevent`, `enddateevent`, `image_Event`, `adresse_Event`, `type_hebergement`, `adressehebergement`, `datepub` from `event` ORDER BY datepub DESC";
+        PreparedStatement st = cn.prepareStatement(requete);
+             ResultSet rs = st.executeQuery();
+              
+           //  ResultSet rs = st.executeQuery(requete);
+              
+             while (rs.next()) {
+                    Event event =new Event();
+                  event.setId_event(rs.getInt("id_event"));
+                    event.setAdresse_Event(rs.getString("adresse_Event"));
+                    event.setAdressehebergement(rs.getString("adressehebergement"));
+                    event.setDescription_event(rs.getString("description_event"));
+                    event.setEnddateevent(rs.getDate("enddateevent"));
+                    event.setStartdateevent(rs.getDate("startdateevent"));
+                    event.setNbrplace_event(rs.getInt("nbrplace_event"));
+                    event.setType_hebergement(rs.getString("type_hebergement"));
+                    event.setType_event(rs.getString("type_Event"));
+                    event.setImage_Event(rs.getString("image_Event"));
+                    event.setTitle_event(rs.getString("title_event"));
+                    event.setDatepub(rs.getDate("datepub"));
+                    
+              
+                
+                 myL.add(event);
+             }
+             
+            
+         return myL;}
 
              
 }

@@ -23,7 +23,22 @@ public class Event {
     private String adresse_Event ;
     private String type_hebergement ;
     private String adressehebergement;
+ private Date datepub;
 
+    public Event(int id_event, int nbrplace_event, String type_event, String title_event, String description_event, Date startdateevent, Date enddateevent, String image_Event, String adresse_Event, String type_hebergement, String adressehebergement, Date datepub) {
+        this.id_event = id_event;
+        this.nbrplace_event = nbrplace_event;
+        this.type_event = type_event;
+        this.title_event = title_event;
+        this.description_event = description_event;
+        this.startdateevent = startdateevent;
+        this.enddateevent = enddateevent;
+        this.image_Event = image_Event;
+        this.adresse_Event = adresse_Event;
+        this.type_hebergement = type_hebergement;
+        this.adressehebergement = adressehebergement;
+        this.datepub = datepub;
+    }
     public Event() {
     }
 
@@ -52,6 +67,21 @@ public class Event {
         this.adresse_Event = adresse_Event;
         this.type_hebergement = type_hebergement;
         this.adressehebergement = adressehebergement;    }
+
+    public Event(int id_event, String adresse_Event, String adressehebergement, String description_event, Date enddateevent, Date startdateevent, int nbrplace_event, String type_hebergement, String type_Event, String image_Event, String title_event, Date datepub) {
+      this.id_event=id_event;
+        this.nbrplace_event = nbrplace_event;
+        this.type_event = type_event;
+        this.title_event = title_event;
+        this.description_event = description_event;
+        this.startdateevent = startdateevent;
+        this.enddateevent = enddateevent;
+        //this.image_Event = image_Event;
+        this.adresse_Event = adresse_Event;
+        this.type_hebergement = type_hebergement;
+        this.adressehebergement = adressehebergement;  
+        this.datepub=datepub;
+    }
 
    
 
@@ -141,6 +171,14 @@ public class Event {
 
     public void setAdressehebergement(String adressehebergement) {
         this.adressehebergement = adressehebergement;
+    }
+
+    public Date getDatepub() {
+        return datepub;
+    }
+
+    public void setDatepub(Date datepub) {
+        this.datepub = datepub;
     }
     
 }

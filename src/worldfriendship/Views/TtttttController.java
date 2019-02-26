@@ -167,6 +167,8 @@ public class TtttttController implements Initializable {
     private ScrollPane comments;
     @FXML
     private Tab tabY;
+    @FXML
+    private Label datecrea;
 
     /**
      * Initializes the controller class.
@@ -200,6 +202,7 @@ public class TtttttController implements Initializable {
             SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
             startD.setText(sdf1.format(newEvent.getStartdateevent()));
             endD.setText(sdf1.format(newEvent.getEnddateevent()));
+            datecrea.setText(sdf1.format(newEvent.getDatepub()));
 
             Image imageURI = new Image("file:C:/wamp64/www/images/" + newEvent.getImage_Event());
             image.setFill(new ImagePattern(imageURI));

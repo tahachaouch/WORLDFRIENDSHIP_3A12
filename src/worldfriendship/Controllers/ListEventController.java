@@ -6,6 +6,7 @@
 package worldfriendship.Controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
@@ -132,12 +133,79 @@ public class ListEventController implements Initializable {
     private JFXButton catButton;
     @FXML
     private JFXButton eventButton11;
-
+    @FXML
+    private JFXComboBox<String> tri;
+    private ObservableList<Event> d1;
     /**
      * Initializes the controller class.
      */
-    @Override
+  //  @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+       tri.getItems().add("Date de publication");
+        tri.getItems().add("Réactions");
+        tri.setOnAction((event)->{
+            String valeur =tri.getValue();
+            if
+                    (("Date de publication".equals(valeur))){
+                try{
+                  //  EventService serv =new EventService();
+                  //  d1=serv.EventTrieDate();
+              
+            TilePane b = new TilePane();
+           
+           // b.setPadding(new javafx.geometry.Insets(5,5,5,5));
+           
+            
+            TilePane c = new TilePane();
+            FadeTransition ft = new FadeTransition(Duration.millis(1500));
+            
+            EventService aff= new  EventService();
+            
+            d1= aff.EventTrieDate();
+           // System.out.println(data1.size());
+            for ( Event d : d1) {
+                
+                try {
+                    
+                    
+                    
+                  //  System.out.println(d.getTitle_event());
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/DivEVENT.fxml"));
+                    Parent root = (Pane) loader.load();
+                    DivEVENTController DHC = loader.getController();
+                    DHC.LoadValues(d);
+                    
+                    //   c.setVgap(40);
+                    c.getChildren().removeAll();
+                    
+                    
+                    c.getChildren().add(root);
+                } catch (IOException ex) {
+                    Logger.getLogger(ListEventController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            c.setPrefColumns(2);
+            c.setPadding(new javafx.geometry.Insets(0));
+            c.setHgap(10);
+            c.setVgap(80);
+            b.getChildren().add(c);
+            b.setPrefWidth(1000);
+            pane.setContent(b);
+            
+                    
+                    
+                }catch (SQLException ex) {
+                    Logger.getLogger(ListEventController.class.getName()).log(Level.SEVERE, null, ex);
+                }  
+//            ////////// end 9dima////////////
+//
+////        editicon.setVisible(false);
+////        deleteicon.setVisible(false);
+
+  
+ }      });
+////////////////////////////////////////////////////////////////////////////////////////////
     try {
             TilePane b = new TilePane();
            
@@ -190,10 +258,8 @@ public class ListEventController implements Initializable {
 ////        editicon.setVisible(false);
 ////        deleteicon.setVisible(false);
 
-    }
-
-
-
+  
+ }  
     @FXML
     private void openmap(MouseEvent event) throws IOException {
       

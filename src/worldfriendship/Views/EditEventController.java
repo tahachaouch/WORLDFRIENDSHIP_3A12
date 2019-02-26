@@ -10,7 +10,6 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
