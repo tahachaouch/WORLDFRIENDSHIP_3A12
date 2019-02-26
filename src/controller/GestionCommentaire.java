@@ -48,7 +48,7 @@ public class GestionCommentaire {
                 st.setString(2,r.getCommentaire());
                 st.setDate(3, r.getDate_comment());
                 st.setInt(4, r.getId_article().getId());
-                  st.executeUpdate();
+                st.executeUpdate();
 
                   
            
@@ -57,7 +57,7 @@ public class GestionCommentaire {
         ObservableList<CommentaireARTICLE> myList = FXCollections.observableArrayList();
        myList.clear();
        try {
-            String requete = "SELECT id, commentaire, date_comment from commentarticle where id="+e.getId();
+            String requete = "SELECT `id`, `commentaire`, `date_comment` from commentarticle where id_article="+e.getId();
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(requete);
             while (rs.next()) {
@@ -75,7 +75,7 @@ public class GestionCommentaire {
      
      public int CountReview(CommentaireARTICLE R) throws SQLException{
          int s=0;
-     String requete = "SELECT COUNT(*) as total from likes where idCmt='"+R.getCommentaire()+"'";
+     String requete = "SELECT COUNT(*) as total from likes where id_commentaire='"+R.getCommentaire()+"'";
       Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(requete);
 

@@ -44,6 +44,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -51,6 +52,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -119,6 +121,8 @@ public static int i;
     @FXML
     private JFXTextArea commentaire;
     Article newArticle;
+    @FXML
+    private ScrollPane comments;
   
        
     @Override
@@ -169,18 +173,22 @@ public static int i;
     }
    
  public void ShowArticle(int id) throws SQLException {
+     tabpane.getSelectionModel().select(tabA);
+     
      AffichageAjout af= new AffichageAjout();
- Article ar = af.afficherService().filtered(e -> e.getId() == id).get(0);
+     newArticle = new Article();
+ newArticle = af.afficherService().filtered(e -> e.getId() == id).get(0);
 
       
-         idd.setText(String.valueOf(ar.getId()));
-        txtitre.setText(ar.getTitre_article());
-        txtblog.setText(ar.getBlog());
-        txttags.setText(ar.getTags());
-      Image imageURI2 = new Image("file:C://wamp64/www/Images/" + ar.getImage());
+         idd.setText(String.valueOf(newArticle.getId()));
+        txtitre.setText(newArticle.getTitre_article());
+        txtblog.setText(newArticle.getBlog());
+        txttags.setText(newArticle.getTags());
+      Image imageURI2 = new Image("file:C://wamp64/www/Images/" + newArticle.getImage());
         txtimage.setFill(new ImagePattern(imageURI2));
          DateFormat df1 = new SimpleDateFormat("MM/dd/yyyy");
-       txtcree.setText(String.valueOf(df1.format(ar.getCree())));
+       txtcree.setText(String.valueOf(df1.format(newArticle.getCree())));
+       Reviewslist(newArticle);
        
  }
 
@@ -204,7 +212,7 @@ public static int i;
 ////////////////////////////////////// Commentaire
     public void Reviewslist(Article e) throws SQLException{
          TilePane b = new TilePane();
-        tabpane.getSelectionModel().select(tabA);
+        tabpane.getSelectionModel().select(tabC);
         b.setPadding(new javafx.geometry.Insets(30));
         TilePane c = new TilePane();
 
@@ -215,7 +223,7 @@ public static int i;
 
             try {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/DivReview.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/DivComment.fxml"));
                 Parent root = (Pane) loader.load();
                 DivCommentController DHC = loader.getController();
                 DHC.LoadValues(d,e);
@@ -234,7 +242,7 @@ public static int i;
         c.setVgap(50);
         b.getChildren().add(c);
         b.setPrefWidth(1000);
-    //    comments.setContent(b);
+      comments.setContent(b);
       //  scroll.getChildren().add(b);
         
 
@@ -258,5 +266,9 @@ public static int i;
         r.setDate_comment(date_sql);
         greviews.addReview(r);
         Reviewslist(newArticle);
+    }
+
+    @FXML
+    private void Reviewslist(Event event) {
     }
 }

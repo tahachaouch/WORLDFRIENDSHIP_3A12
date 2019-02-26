@@ -68,6 +68,7 @@ public void LoadValues(CommentaireARTICLE r, Article e) throws SQLException {
         ////recuêrer esm l user
         // String charname = r.getIduser().getUsername().substring(0, 1).toUpperCase();
        // rname.setText(charname + r.getIduser().getUsername().substring(1));
+    
         ShowArticleController pr= new ShowArticleController();
         rcom.setText(r.getCommentaire());
         /////recuperer limage de user                  
@@ -78,6 +79,7 @@ public void LoadValues(CommentaireARTICLE r, Article e) throws SQLException {
          GestionCommentaire gr = new GestionCommentaire();
         nbrlikes.setText(String.valueOf(gr.CountReview(r)));
          id.setText(String.valueOf(r.getId()));
+       
       
       /////
      /* if (woldfriendship.Views.FirstFrame.user==null)
