@@ -12,16 +12,14 @@ package worldfriendship.Entities;
 public class Likereview {
     private int id;
     private Review idCmt;
-    private Event id_event;
     private fos_user iduser;
 
     public Likereview() {
     }
 
-    public Likereview(int id, Review idCmt, Event id_event, fos_user iduser) {
+    public Likereview(int id, Review idCmt, fos_user iduser) {
         this.id = id;
         this.idCmt = idCmt;
-        this.id_event = id_event;
         this.iduser = iduser;
     }
 
@@ -43,13 +41,7 @@ public class Likereview {
         this.idCmt = idCmt;
     }
 
-    public Event getId_event() {
-        return id_event;
-    }
-
-    public void setId_event(Event id_event) {
-        this.id_event = id_event;
-    }
+   
 
    
 

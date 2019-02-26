@@ -10,9 +10,18 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextArea;
+import com.lynden.gmapsfx.GoogleMapView;
+import com.lynden.gmapsfx.javascript.object.GoogleMap;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.javascript.object.MapOptions;
+import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
+import com.lynden.gmapsfx.javascript.object.Marker;
+import com.lynden.gmapsfx.javascript.object.MarkerOptions;
+import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -169,6 +178,12 @@ public class TtttttController implements Initializable {
     private Tab tabY;
     @FXML
     private Label datecrea;
+    @FXML
+    private GoogleMapView googleMapView;
+     private GoogleMap map;
+
+    private DecimalFormat formatter = new DecimalFormat("###.00000");
+    private GeocodingService geocodingService;
 
     /**
      * Initializes the controller class.
@@ -183,6 +198,26 @@ public class TtttttController implements Initializable {
   public void ShowEvent(int id) throws SQLException {
       //System.out.println(id);
       
+        ///////map////////
+        googleMapView.addMapInializedListener(() -> {
+
+            MapOptions mapOptions = new MapOptions();
+
+            mapOptions.center(new LatLong(10, 10))
+                    .mapType(MapTypeIdEnum.ROADMAP)
+                    .zoom(15);
+            map = googleMapView.createMap(mapOptions, false);
+            MarkerOptions markerOptions = new MarkerOptions();
+
+            markerOptions.position(new LatLong(10, 10))
+                    .visible(Boolean.TRUE);
+
+            Marker marker = new Marker(markerOptions);
+
+            map.addMarker(marker);
+        });
+        ////// map wfé//////
+
         tab.getSelectionModel().select(tabY);
                EventService es=new EventService();
         newEvent = new Event(); 

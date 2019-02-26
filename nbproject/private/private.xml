@@ -5,7 +5,7 @@
             <url>src/worldfriendship/Views/TtttttController.java</url>
             <bookmark id="1">
                 <name/>
-                <line>199</line>
+                <line>201</line>
                 <key/>
             </bookmark>
         </file>
@@ -13,9 +13,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Views/TtttttController.java</file>
-            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Services/GReviews.java</file>
             <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Controllers/DivReviewController.java</file>
-            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Services/EventService.java</file>
+            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Services/GReviews.java</file>
+            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Entities/Likereview.java</file>
+            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Entities/Review.java</file>
+            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Entities/fos_user.java</file>
         </group>
     </open-files>
 </project-private>

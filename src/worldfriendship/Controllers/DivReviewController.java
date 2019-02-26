@@ -136,8 +136,8 @@ public class DivReviewController implements Initializable {
           rliekd.setVisible(true);
            
            Likereview lr=new Likereview();
-       lr.setIdCmt(r);
-      /* lr.setIduser(worldfriendship.Views.FirstFrame.user);
+           lr.setIdCmt(r);
+      // lr.setIduser(worldfriendship.Views.FirstFrame.user);
             try {
                 gr.AddLike(lr);
             } catch (SQLException ex) {
@@ -147,17 +147,17 @@ public class DivReviewController implements Initializable {
                 nbrlikes.setText(String.valueOf(gr.CountReview(r)));
             } catch (SQLException ex) {
                 Logger.getLogger(DivReviewController.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
+            }
        });
       rliekd.setOnMouseClicked((event) -> {
            
-          /*  try {
-                gr.DeleteLike(PIDEV.Views.FirstFrame.user.getId(),r.getId());
+           try {
+                gr.DeleteLike(1,r.getIdCmt());///sesssion
                 rjaime.setVisible(true);
                 rliekd.setVisible(false);
             } catch (SQLException ex) {
                 Logger.getLogger(DivReviewController.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
+            }
              try {
                 nbrlikes.setText(String.valueOf(gr.CountReview(r)));
             } catch (SQLException ex) {

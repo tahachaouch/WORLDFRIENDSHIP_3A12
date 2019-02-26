@@ -94,14 +94,14 @@ public class GReviews {
         ste.setInt(2, id2);
         ste.executeUpdate();
     }
-    /*   public void AddLike (Likereview R) throws SQLException
+       public void AddLike (Likereview R) throws SQLException
     {
         String requete
                     = "INSERT INTO likereview ( iduser, idCmt) VALUES (?,?)";
         PreparedStatement st = cn.prepareStatement(requete);
-            st.setInt(3, R.getIduser().getId());
-            st.setInt(1, R.getIdCmt().getIdCmt());
+            st.setInt(1,1);
+            st.setInt(2, R.getIdCmt().getIdCmt());
             
          st.executeUpdate();
-        }*/
+        }
 }
