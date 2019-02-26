@@ -48,7 +48,7 @@
                         <Label fx:id="idd" visible="false" />
                         <FontAwesomeIconView fx:id="trash1" fill="#2c2929" glyphName="edit" layoutX="683.0" layoutY="63.0" onMouseClicked="#EditArticle" size="30" text="" />
                         <Button fx:id="AddCommentaire" layoutX="462.0" layoutY="490.0" mnemonicParsing="false" onAction="#AddCommentaire" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: bcbcbc;" text="Commenter" textFill="#ff214f" />
-                        <JFXTextArea layoutX="139.0" layoutY="437.0" prefHeight="79.0" prefWidth="308.0" text="Taper votre commentaire" unFocusColor="#ff214f" />
+                        <JFXTextArea fx:id="commentaire" layoutX="139.0" layoutY="437.0" prefHeight="79.0" prefWidth="308.0" text="Taper votre commentaire" unFocusColor="#ff214f" />
                         <FontAwesomeIconView fill="#ff214f" glyphName="EDIT" layoutX="119.0" layoutY="455.0" size="19.0" text="" wrappingWidth="23.571422412991524" />
                         <FontAwesomeIconView fill="#ff214f" glyphName="THUMBS_UP" layoutX="597.0" layoutY="511.0" size="14" wrappingWidth="18.0" />
                         <Label fx:id="nbrlikes" layoutX="663.0" layoutY="493.0" prefHeight="27.0" prefWidth="28.0" />

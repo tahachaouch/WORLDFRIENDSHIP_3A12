@@ -22,6 +22,9 @@ public class LikeCommentaire {
         this.id_commentaire = id_commentaire;
     }
 
+    public LikeCommentaire() {
+    }
+
     public int getId() {
         return id;
     }

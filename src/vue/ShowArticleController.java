@@ -9,15 +9,18 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import connexion.conDB;
 import controller.AddArticleController;
 import controller.AffichageAjout;
 import controller.AfficheArticlesController;
+import controller.GestionCommentaire;
 import controller.ListArticleController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Article;
+import entities.CommentaireARTICLE;
 import entities.Main;
 import static entities.Main.LoggedUser;
 import entities.LikeCommentaire;
@@ -70,6 +73,8 @@ import static vue.ShowArticleController.cnx;
  */
 public class ShowArticleController implements Initializable {
  private ObservableList<Article> myList;
+  private ObservableList<CommentaireARTICLE> listReview;
+ 
 public static int i;
     @FXML
     private Label txtcree;
@@ -111,7 +116,9 @@ public static int i;
     private Tab tabA;
     @FXML
     private Tab tabC;
-    
+    @FXML
+    private JFXTextArea commentaire;
+    Article newArticle;
   
        
     @Override
@@ -194,8 +201,62 @@ public static int i;
                         ds.oldValues(s.getId());
                         stage.show();
                     } 
+////////////////////////////////////// Commentaire
+    public void Reviewslist(Article e) throws SQLException{
+         TilePane b = new TilePane();
+        tabpane.getSelectionModel().select(tabA);
+        b.setPadding(new javafx.geometry.Insets(30));
+        TilePane c = new TilePane();
 
+        GestionCommentaire gr = new GestionCommentaire();
+        listReview = gr.ListReviews(e);
+        
+        for (CommentaireARTICLE d : listReview) {
+
+            try {
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/DivReview.fxml"));
+                Parent root = (Pane) loader.load();
+                DivCommentController DHC = loader.getController();
+                DHC.LoadValues(d,e);
+
+                //   c.setVgap(40);
+                c.getChildren().removeAll();
+
+                c.getChildren().add(root);
+            } catch (IOException ex) {
+                Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        c.setPrefColumns(1);
+        c.setPadding(new javafx.geometry.Insets(0));
+        c.setHgap(25);
+        c.setVgap(50);
+        b.getChildren().add(c);
+        b.setPrefWidth(1000);
+    //    comments.setContent(b);
+      //  scroll.getChildren().add(b);
+        
+
+    }
+
+    
+    
+    
+    
+    
+    
+  ////////////////////////////////////////////////////////////////////////// end  
     @FXML
-    private void AddCommentaire(ActionEvent event) {
+    private void AddCommentaire(ActionEvent event) throws SQLException {
+        GestionCommentaire greviews = new GestionCommentaire();
+        CommentaireARTICLE r = new CommentaireARTICLE();
+        r.setCommentaire(commentaire.getText());
+        r.setId_article(newArticle);
+        java.util.Date date_util = new java.util.Date();
+        java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
+        r.setDate_comment(date_sql);
+        greviews.addReview(r);
+        Reviewslist(newArticle);
     }
 }

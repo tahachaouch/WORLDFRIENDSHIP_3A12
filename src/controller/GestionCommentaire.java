@@ -88,7 +88,7 @@ public class GestionCommentaire {
       public void DeleteReveiw(int id) throws SQLException{
             
 
-        String req = "DELETE FROM review WHERE idCmt=?";
+        String req = "DELETE FROM commentarticle WHERE id=?";
         PreparedStatement ste = cnx.prepareStatement(req);
         ste.setInt(1,id);
         ste.executeUpdate();
@@ -102,14 +102,5 @@ public class GestionCommentaire {
         ste.setInt(2, id2);
         ste.executeUpdate();
     }
-    /*   public void AddLike (Likereview R) throws SQLException
-    {
-        String requete
-                    = "INSERT INTO likereview ( iduser, idCmt) VALUES (?,?)";
-        PreparedStatement st = cn.prepareStatement(requete);
-            st.setInt(3, R.getIduser().getId());
-            st.setInt(1, R.getIdCmt().getIdCmt());
-            
-         st.executeUpdate();
-        }*/
+
 }
