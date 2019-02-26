@@ -8,6 +8,7 @@ package vue;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import connexion.conDB;
@@ -19,7 +20,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Article;
 import entities.Main;
 import static entities.Main.LoggedUser;
-import entities.Likereview;
+import entities.LikeCommentaire;
 import entities.User;
 import static java.awt.SystemColor.menu;
 import java.io.File;
@@ -47,6 +48,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -100,7 +102,15 @@ public static int i;
     @FXML
     private FontAwesomeIconView trash;
     @FXML
-    private TextField nbrlikes;
+    private Label nbrlikes;
+    @FXML
+    private Button AddCommentaire;
+    @FXML
+    private JFXTabPane tabpane;
+    @FXML
+    private Tab tabA;
+    @FXML
+    private Tab tabC;
     
   
        
@@ -184,4 +194,8 @@ public static int i;
                         ds.oldValues(s.getId());
                         stage.show();
                     } 
+
+    @FXML
+    private void AddCommentaire(ActionEvent event) {
+    }
 }

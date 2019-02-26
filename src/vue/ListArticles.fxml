@@ -31,7 +31,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXDrawer fx:id="menu" defaultDrawerSize="225.0" layoutY="21.0" prefHeight="624.0" prefWidth="200.0" />
+      <JFXDrawer fx:id="menu" defaultDrawerSize="225.0" layoutY="21.0" prefHeight="624.0" prefWidth="146.0" />
       <FontAwesomeIconView fill="#ff214f" glyphName="SLIDERS" layoutX="47.0" layoutY="107.0" size="22" text="" x="970.0" y="117.0" />
    </children>
 </AnchorPane>

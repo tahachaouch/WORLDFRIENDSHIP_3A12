@@ -19,7 +19,7 @@ public class Main extends Application{
  public static User LoggedUser;
    @Override 
  public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/vue/ListArticleAminDelete.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/vue/HomePage.fxml"));
         
         Scene scene = new Scene(root);
        
