@@ -104,6 +104,16 @@
                                                       <Font name="Bell MT" size="15.0" />
                                                    </font>
                                                 </Label>
+                                                <JFXButton fx:id="jaime" layoutX="448.0" layoutY="509.0" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: ff214f; -fx-text-fill: white; -fx-font-size: 14;" text="J'aime">
+                                                   <graphic>
+                                                      <FontAwesomeIconView fill="#fffdfd" glyphName="THUMBS_UP" size="14" wrappingWidth="18.0" />
+                                                   </graphic>
+                                                </JFXButton>
+                                                <JFXButton fx:id="liked" layoutX="448.0" layoutY="508.0" opacity="0.77" prefHeight="33.0" prefWidth="118.0" style="-fx-background-color: ff214f; -fx-text-fill: white; -fx-font-size: 14;" text="Liked" visible="false">
+                                                   <graphic>
+                                                      <FontAwesomeIconView fill="#fffdfd" glyphName="CHECK" size="14" wrappingWidth="18.0" />
+                                                   </graphic>
+                                                </JFXButton>
                                              </children>
                                           </AnchorPane>
                                           <GoogleMapView fx:id="googleMapView" layoutX="11.0" layoutY="681.0" prefHeight="308.0" prefWidth="620.0" />

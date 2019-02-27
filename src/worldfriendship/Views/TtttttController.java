@@ -52,6 +52,7 @@ import javafx.stage.Stage;
 import worldfriendship.Controllers.DivReviewController;
 import worldfriendship.Entities.Event;
 import worldfriendship.Entities.Review;
+import worldfriendship.Entities.likeevent;
 import worldfriendship.Services.EventService;
 import worldfriendship.Services.GReviews;
 
@@ -184,13 +185,17 @@ public class TtttttController implements Initializable {
 
     private DecimalFormat formatter = new DecimalFormat("###.00000");
     private GeocodingService geocodingService;
+    @FXML
+    private JFXButton jaime;
+    @FXML
+    private JFXButton liked;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+        
     }    
 
   
@@ -217,9 +222,40 @@ public class TtttttController implements Initializable {
             map.addMarker(marker);
         });
         ////// map wfé//////
+        
+         jaime.setOnMouseClicked((event) -> {
+           
+          jaime.setVisible(false);
+          liked.setVisible(true);
+           EventService es=new EventService();
+           
+           likeevent lr=new likeevent();
+           Event e=new Event();
+           lr.setIdevent(e);
+      // lr.setIduser(worldfriendship.Views.FirstFrame.user);
+            try {            
+                es.AjouterLike(lr,1,Integer.parseInt(idd.getText()));
+            } catch (SQLException ex) {
+                Logger.getLogger(TtttttController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+       });
+      liked.setOnMouseClicked((event) -> {
+                   EventService es=new EventService();
+                   Event e=new Event();
+           try {
+                es.EffacerLike(1, e.getId_event()); ///sesssion
+                jaime.setVisible(true);
+                liked.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(TtttttController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+      });
+
 
         tab.getSelectionModel().select(tabY);
-               EventService es=new EventService();
+        EventService es=new EventService();
         newEvent = new Event(); 
         
             newEvent=es.afficherEvent().filtered(e -> e.getId_event() == id).get(0);
@@ -244,7 +280,30 @@ public class TtttttController implements Initializable {
             Reviewslist(newEvent);
             
        
-                
+         //test like
+         
+         try {
+            EventService s=new EventService();
+            //s.testlike(1,Integer.parseInt(idd.getText()));
+            boolean b ;
+            int m;
+                        System.out.println("ssssssssssssss"+idd.getText());
+
+            m=Integer.parseInt(idd.getText());
+            b=s.testlike(1,m);
+            System.out.println(b);
+            if (b==true)
+            {
+              jaime.setVisible(false);
+              liked.setVisible(true);  
+            }
+            else{
+                liked.setVisible(false);
+                jaime.setVisible(true);
+            }
+                    } catch (SQLException ex) {
+            Logger.getLogger(TtttttController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     
 }
