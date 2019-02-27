@@ -5,46 +5,44 @@
  */
 package vue;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-import connexion.conDB;
-import controller.AddArticleController;
 import controller.AffichageAjout;
-import controller.AfficheArticlesController;
 import controller.GestionCommentaire;
-import controller.ListArticleController;
 import controller.Partage;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Article;
 import entities.CommentaireARTICLE;
 import entities.LikeArticle;
-import entities.Main;
-import static entities.Main.LoggedUser;
-import entities.LikeCommentaire;
-import entities.User;
-import static java.awt.SystemColor.menu;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -56,8 +54,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -68,11 +64,13 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javax.imageio.ImageIO;
+import net.glxn.qrgen.QRCode;
+
+import net.glxn.qrgen.image.ImageType;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
-import vue.DivArticleController;
-import static vue.ShowArticleController.cnx;
 
 /**
  * FXML Controller class
@@ -131,12 +129,18 @@ public static int i;
     private Button fcb;
     @FXML
     private JFXButton rjaime1;
+    @FXML
+    private ImageView QRImage;
+    
 
        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-   
+     
+         
+    
      try {
+         
          AnchorPane anchrone = FXMLLoader.load(getClass().getResource("/vue/test.fxml"));
          menu.setSidePane(anchrone);
          
@@ -265,7 +269,13 @@ tray.showAndDismiss(Duration.seconds(3));
             Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    
+     try {
+         QRCode();
+     } catch (IOException ex) {
+         Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (WriterException ex) {
+         Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
+     }
 }//////////////////////////////////////////////////////
 
     @FXML
@@ -352,5 +362,46 @@ tray.showAndDismiss(Duration.seconds(3));
     private void Partager(ActionEvent event) {
              Partage p=new Partage();
      p.Partager(txtitre.getText().toString(),arti.getImage());
+    }
+    
+    private void QRCode() throws IOException, WriterException{
+  
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        String myWeb = txtblog.getText();
+        int width = 300;
+        int height = 300;
+        String fileType = "png";
+         
+        BufferedImage bufferedImage = null;
+        try {
+            BitMatrix byteMatrix = qrCodeWriter.encode(myWeb, BarcodeFormat.QR_CODE, width, height);
+            bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            bufferedImage.createGraphics();
+             
+            Graphics2D graphics = (Graphics2D) bufferedImage.getGraphics();
+            graphics.setColor(Color.WHITE);
+            graphics.fillRect(0, 0, width, height);
+            graphics.setColor(Color.BLACK);
+             
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (byteMatrix.get(i, j)) {
+                        graphics.fillRect(i, j, 1, 1);
+                    }
+                }
+            }
+             
+            System.out.println("Success...");
+             
+        } catch (WriterException ex) {
+            Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        
+        QRImage.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
+        
+    
+        
+        
     }
 }

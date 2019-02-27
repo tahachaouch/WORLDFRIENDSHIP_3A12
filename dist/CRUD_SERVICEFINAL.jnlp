@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CRUD_SERVICEFINAL.jar" size="105285" download="eager" />
+    <jar href="CRUD_SERVICEFINAL.jar" size="106354" download="eager" />
     <jar href="lib\GMapsFX-2.10.0.jar" size="154471" download="eager" />
     <jar href="lib\GMapsFX-2.12.0.jar" size="207618" download="eager" />
     <jar href="lib\TrayNotification.jar" size="41019" download="eager" />
@@ -33,11 +33,14 @@
     <jar href="lib\logback-classic-1.2.1.jar" size="310442" download="eager" />
     <jar href="lib\logback-core-1.2.1.jar" size="473113" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
+    <jar href="lib\qrgen-1.0.jar" size="4932" download="eager" />
     <jar href="lib\restfb-1.32.0.jar" size="1015004" download="eager" />
     <jar href="lib\selenium-server-standalone-3.11.0.jar" size="23422300" download="eager" />
     <jar href="lib\slf4j-api-1.7.2.jar" size="26083" download="eager" />
     <jar href="lib\slf4j-api-1.7.23.jar" size="41105" download="eager" />
     <jar href="lib\webcam-capture-0.3.11.jar" size="416816" download="eager" />
+    <jar href="lib\zxing-core-1.7.jar" size="352719" download="eager" />
+    <jar href="lib\zxing-j2se-1.7.jar" size="22051" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="CRUD_SERVICEFINAL" >
     <param name="requiredFXVersion" value="8.0+"/>
