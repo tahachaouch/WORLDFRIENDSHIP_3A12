@@ -6,6 +6,7 @@
  */
 package controller;
 
+import ch.qos.logback.core.util.Loader;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -88,8 +89,10 @@ public class AddArticleController implements Initializable {
     private JFXHamburger affmenu;
         @FXML
     private JFXDrawer menu;
+    @FXML
+    private Button openCam;
 
-
+    
     /**
      * Initializes the controller class.
      */
@@ -119,7 +122,6 @@ public class AddArticleController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(AddArticleController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
       
        
     }    
@@ -169,6 +171,7 @@ tray.showAndDismiss(Duration.seconds(3));
     }
     @FXML
     private void addImage(MouseEvent event) throws IOException{
+        openCam.setDisable(true);
         FileChooser fc = new FileChooser();
 
         FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (.jpg)", "*.JPG");
@@ -187,20 +190,31 @@ tray.showAndDismiss(Duration.seconds(3));
     @FXML
     private void show(ActionEvent event) throws IOException {
         
-      
+        image1.setDisable(true);
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/webcam.fxml"));
+        Parent root = loader.load();
+        WebcamController m = loader.getController();
         
-         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vue/webcam.fxml"));
-    Parent root1 = (Parent) fxmlLoader.load();
-    Stage stage = new Stage();
-    stage.initModality(Modality.APPLICATION_MODAL);
-  //  stage.initStyle(StageStyle.UNDECORATED);
-    Stage primaryStage = (Stage) pic1.getScene().getWindow();
-    stage.initOwner(primaryStage);
+        Stage stage = new Stage(StageStyle.DECORATED);
+
+        stage.setScene(new Scene(root));
+        stage.show();
+        m.getClosecam().setOnMouseClicked(new EventHandler<MouseEvent>() {
+           @Override
+           public void handle(MouseEvent event) {
+               setImgUploaded(m.getImg1().getImage());
+               stage.close();
+           }
+       });
     
-    stage.setScene(new Scene(root1));  
-    stage.showAndWait();
-   
-    
+    }
+
+    public ImageView getPic1() {
+        return pic1;
+    }
+
+    public void setPic1(ImageView pic1) {
+        this.pic1 = pic1;
     }
 
     

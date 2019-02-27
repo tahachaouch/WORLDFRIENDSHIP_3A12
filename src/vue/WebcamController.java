@@ -54,7 +54,7 @@ public class WebcamController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    boolean mealChosen;
+
     Image card;
     
     private FlowPane bottomCameraControlPane;
@@ -74,6 +74,8 @@ public class WebcamController implements Initializable {
     private BorderPane webCamPane;
     @FXML
     private ImageView img1;
+    @FXML
+    private Button closecam;
 
     
     @Override
@@ -126,7 +128,6 @@ public class WebcamController implements Initializable {
 	}
 
 
-    @FXML
     private void addImage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/AddArticle.fxml"));
         Parent root = (Pane) loader.load();
@@ -258,7 +259,7 @@ public class WebcamController implements Initializable {
 					}
 				}
                                 
-                                if(stopCamera==true){
+                               if(stopCamera==true){
                                    card = SwingFXUtils.toFXImage(webCam.getImage(), null );
                                     img1.setImage(card);
                                      FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/AddArticle.fxml"));
@@ -333,6 +334,22 @@ public class WebcamController implements Initializable {
 		btnCamreaStart.setDisable(false);
 		btnCamreaStop.setDisable(true);
 	}
+
+    public Button getClosecam() {
+        return closecam;
+    }
+
+    public void setClosecam(Button closecam) {
+        this.closecam = closecam;
+    }
+
+    public ImageView getImg1() {
+        return img1;
+    }
+
+    public void setImg1(ImageView img1) {
+        this.img1 = img1;
+    }
 
     
 }
