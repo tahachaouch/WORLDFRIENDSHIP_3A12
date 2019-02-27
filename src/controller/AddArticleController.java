@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -32,6 +33,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -42,7 +44,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javax.imageio.ImageIO;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -50,6 +55,7 @@ import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 import vue.ListArticlesController;
+import vue.WebcamController;
 
 /**
  * FXML Controller class
@@ -57,6 +63,8 @@ import vue.ListArticlesController;
  * @author ASUS
  */
 public class AddArticleController implements Initializable {
+    
+    static Image img22;
 
     @FXML
     private TextField txttitre;
@@ -115,7 +123,12 @@ public class AddArticleController implements Initializable {
       
        
     }    
-
+    
+    public void setImgUploaded(Image image){
+        pic1.setImage(image);
+       
+    }
+    
    @FXML
     private void ajouter(ActionEvent event) throws SQLException {
         Image image1 = pic1.getImage();
@@ -170,6 +183,28 @@ tray.showAndDismiss(Duration.seconds(3));
             System.out.println(ex.getMessage());
         }
     }
+
+    @FXML
+    private void show(ActionEvent event) throws IOException {
+        
+      
+        
+         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vue/webcam.fxml"));
+    Parent root1 = (Parent) fxmlLoader.load();
+    Stage stage = new Stage();
+    stage.initModality(Modality.APPLICATION_MODAL);
+  //  stage.initStyle(StageStyle.UNDECORATED);
+    Stage primaryStage = (Stage) pic1.getScene().getWindow();
+    stage.initOwner(primaryStage);
+    
+    stage.setScene(new Scene(root1));  
+    stage.showAndWait();
+   
+    
+    }
+
+    
+    
 
     
 }

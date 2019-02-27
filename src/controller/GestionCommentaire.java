@@ -76,7 +76,7 @@ public class GestionCommentaire {
      
      public int CountReview(CommentaireARTICLE R) throws SQLException{
          int s=0;
-     String requete = "SELECT COUNT(*) as total from likes where id_commentaire='"+R.getCommentaire()+"'";
+     String requete = "SELECT COUNT(*) as total from commentarticle where id_article='"+R.getId_article()+"'";
       Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(requete);
 

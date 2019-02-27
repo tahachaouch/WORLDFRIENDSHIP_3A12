@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -68,6 +69,7 @@
             <JFXButton layoutX="431.0" layoutY="407.0" onAction="#ajouter" prefHeight="40.0" prefWidth="108.0" ripplerFill="#d74545" text="Ajouter" textFill="#ff214f" />
             <ImageView fx:id="pic1" fitHeight="150.0" fitWidth="178.0" layoutX="398.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true" />
             <FontAwesomeIconView fx:id="image1" glyphName="PLUS" layoutX="488.0" layoutY="282.0" onMouseClicked="#addImage" size="30" text="" wrappingWidth="22.85714340209961" />
+            <Button layoutX="474.0" layoutY="471.0" mnemonicParsing="false" onAction="#show" text="Button" />
          </children>
       </AnchorPane>
       <JFXDrawer fx:id="menu" defaultDrawerSize="225.0" layoutY="11.0" prefHeight="624.0" prefWidth="200.0" />

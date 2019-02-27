@@ -54,6 +54,8 @@
                         <FontAwesomeIconView fill="#ff214f" glyphName="THUMBS_UP" layoutX="597.0" layoutY="511.0" size="14" wrappingWidth="18.0" />
                         <Label fx:id="nbrlikes" layoutX="663.0" layoutY="493.0" prefHeight="27.0" prefWidth="28.0" />
                         <FontAwesomeIconView fx:id="trash" fill="RED" glyphName="TRASH" layoutX="716.0" layoutY="63.0" onMouseClicked="#DeleteArticle" size="30" text="" />
+                        <Label fx:id="NbrComment" layoutX="316.0" layoutY="396.0" prefHeight="40.0" prefWidth="74.0" text="Nbr comment" />
+                        <Button fx:id="fcb" layoutX="614.0" layoutY="446.0" mnemonicParsing="false" onAction="#Partager" text="Button" />
                      </children>
                   </AnchorPane>
               </content>

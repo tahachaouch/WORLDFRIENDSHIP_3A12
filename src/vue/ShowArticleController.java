@@ -18,6 +18,7 @@ import controller.AffichageAjout;
 import controller.AfficheArticlesController;
 import controller.GestionCommentaire;
 import controller.ListArticleController;
+import controller.Partage;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Article;
 import entities.CommentaireARTICLE;
@@ -102,7 +103,7 @@ public static int i;
     private JFXDrawer menu;
      
   
-     
+     Article arti;
     static Connection cnx;
     @FXML
     private AnchorPane tab;
@@ -127,7 +128,11 @@ public static int i;
     Article newArticle;
     @FXML
     private ScrollPane comments;
-  
+    @FXML
+    private Label NbrComment;
+    @FXML
+    private Button fcb;
+
        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -196,7 +201,9 @@ tray.showAndDismiss(Duration.seconds(3));
          DateFormat df1 = new SimpleDateFormat("MM/dd/yyyy");
        txtcree.setText(String.valueOf(df1.format(newArticle.getCree())));
        Reviewslist(newArticle);
-       
+
+     
+       arti=newArticle;
  }
 
     @FXML
@@ -277,5 +284,11 @@ tray.showAndDismiss(Duration.seconds(3));
 
     @FXML
     private void Reviewslist(Event event) {
+    }
+
+    @FXML
+    private void Partager(ActionEvent event) {
+             Partage p=new Partage();
+     p.Partager(txtitre.getText().toString(),arti.getImage());
     }
 }
