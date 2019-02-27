@@ -23,6 +23,7 @@ public class Article {
     private Date cree;
     private boolean archive;
     public String tags;
+    public User id_user;
 
     public Article(String titre_article) {
         this.titre_article = titre_article;
@@ -161,6 +162,14 @@ public class Article {
     @Override
     public String toString() {
         return "Article{" + "id=" + id + ", titre_article=" + titre_article + ", blog=" + blog + ", image=" + image + ", modifie=" + modifie + ", cree=" + cree + ", archive=" + archive + ", tags=" + tags + '}';
+    }
+
+    public User getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(User id_user) {
+        this.id_user = id_user;
     }
 
    

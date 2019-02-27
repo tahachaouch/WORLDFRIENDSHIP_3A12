@@ -52,6 +52,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javax.imageio.ImageIO;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.controlsfx.control.PopOver;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -89,8 +90,13 @@ public class AddArticleController implements Initializable {
     private JFXHamburger affmenu;
         @FXML
     private JFXDrawer menu;
-    @FXML
     private Button openCam;
+    @FXML
+    private FontAwesomeIconView titrew;
+    @FXML
+    private FontAwesomeIconView tagw;
+    @FXML
+    private FontAwesomeIconView imgw;
 
     
     /**
@@ -133,6 +139,8 @@ public class AddArticleController implements Initializable {
     
    @FXML
     private void ajouter(ActionEvent event) throws SQLException {
+        if (controleSaisie())
+        {       
         Image image1 = pic1.getImage();
             String nameImage1 = saveToFileImageNormal(image1);
          String titre_article =txttitre.getText();
@@ -150,7 +158,7 @@ tray.setAnimationType(AnimationType.POPUP);
 tray.showAndDismiss(Duration.seconds(3));
  AffichageAjout af=new AffichageAjout();
  af.ajouterService(a);
-     
+        }
  
   
         
@@ -187,9 +195,119 @@ tray.showAndDismiss(Duration.seconds(3));
         }
     }
 
-    @FXML
     private void show(ActionEvent event) throws IOException {
+     
+    
+    }
+
+    public ImageView getPic1() {
+        return pic1;
+    }
+
+    public void setPic1(ImageView pic1) {
+        this.pic1 = pic1;
+    }
+
+    
+    
+  public boolean controleSaisie() {
+        if (txttitre.getText().replaceAll("\\s+","").isEmpty()) {
+            titrew.setVisible(true);
+            txttitre.setStyle("-jfx-focus-color:red");
+            txttitre.requestFocus();
+            PopOver pop = new PopOver();
+            pop.setContentNode(new Label("Veuillez choisir un titre"));
+
+            titrew.setOnMouseEntered((event) -> {
+                pop.show(titrew);
+            });
+            titrew.setOnMouseExited((event) -> {
+                pop.hide();
+            });
+            txttitre.setOnKeyTyped((event2) -> {
+                titrew.setVisible(false);
+                txttitre.setStyle("-jfx-focus-color:green");
+            });
+            return false;
+
+        }
+
+        if (txtblog.getText().replaceAll("\\s+","").isEmpty()) {
+            descriptionw.setVisible(true);
+            txtblog.setStyle("-jfx-focus-color:red");
+            txtblog.requestFocus();
+            PopOver pop = new PopOver();
+            pop.setContentNode(new Label("Veuillez saisir une description"));
+
+            descriptionw.setOnMouseEntered((event) -> {
+                pop.show(descriptionw);
+            });
+            descriptionw.setOnMouseExited((event) -> {
+                pop.hide();
+            });
+            txtblog.setOnKeyTyped((event2) -> {
+                descriptionw.setVisible(false);
+                txtblog.setStyle("-jfx-focus-color:green");
+            });
+            return false;
+
+        }
+        if ((txttags.getText().replaceAll("\\s+","").isEmpty())) {
+            tagw.setVisible(true);
+            txttags.setStyle("-jfx-focus-color:red");
+            txttags.requestFocus();
+            PopOver pop = new PopOver();
+            pop.setContentNode(new Label("Veuillez inserer des Tags"));
+
+            tagw.setOnMouseEntered((event) -> {
+                pop.show(tagw);
+            });
+            tagw.setOnMouseExited((event) -> {
+                pop.hide();
+            });
+            txttags.setOnKeyTyped((event2) -> {
+                tagw.setVisible(false);
+                txttags.setStyle("-jfx-focus-color:green");
+            });
+            return false;
+
+        }
+      
+          if ((pic1.getImage()==null)) {
+            imgw.setVisible(true);
+            pic1.setStyle("-jfx-focus-color:red");
+            pic1.requestFocus();
+            PopOver pop = new PopOver();
+            pop.setContentNode(new Label("Veuillez choisir une photo "));
+
+            imgw.setOnMouseEntered((event) -> {
+                pop.show(imgw);
+            });
+            imgw.setOnMouseExited((event) -> {
+                pop.hide();
+            });
+             pic1.setOnMouseClicked((event2) -> {
+                try {
+                    imgw.setVisible(false);
+                    addImage(event2);
+                } catch (IOException ex) {
+                    Logger.getLogger(AddArticleController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+           
+            return false;
+
+        }
         
+
+        
+
+        return true;
+    }
+
+    @FXML
+    private void showImg(MouseEvent event) throws IOException {
+           
         image1.setDisable(true);
        FXMLLoader loader = new FXMLLoader(getClass().getResource("/vue/webcam.fxml"));
         Parent root = loader.load();
@@ -206,19 +324,6 @@ tray.showAndDismiss(Duration.seconds(3));
                stage.close();
            }
        });
-    
     }
-
-    public ImageView getPic1() {
-        return pic1;
-    }
-
-    public void setPic1(ImageView pic1) {
-        this.pic1 = pic1;
-    }
-
-    
-    
-
     
 }

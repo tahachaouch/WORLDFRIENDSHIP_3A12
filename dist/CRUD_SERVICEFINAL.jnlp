@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="CRUD_SERVICEFINAL.jar" size="106354" download="eager" />
+    <jar href="CRUD_SERVICEFINAL.jar" size="109531" download="eager" />
     <jar href="lib\GMapsFX-2.10.0.jar" size="154471" download="eager" />
     <jar href="lib\GMapsFX-2.12.0.jar" size="207618" download="eager" />
     <jar href="lib\TrayNotification.jar" size="41019" download="eager" />

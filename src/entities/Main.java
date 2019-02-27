@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * @author karim
  */
 public class Main extends Application{
- 
+
  public static User LoggedUser;
    @Override 
  public void start(Stage stage) throws IOException {
@@ -27,7 +27,7 @@ public class Main extends Application{
         stage.setScene(scene);
       //  stage.setTitle("");
         stage.show();
-    
+  
  }
    public static void main(String[] args) {
         launch(args);

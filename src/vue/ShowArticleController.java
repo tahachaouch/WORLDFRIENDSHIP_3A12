@@ -89,6 +89,8 @@ public static int i;
     private Label txtblog;
     @FXML
     private Label txttags;
+     @FXML
+    private Label txtauteur;
     @FXML
     private JFXButton rjaime;
     private ImageView txtimg;
@@ -131,7 +133,6 @@ public static int i;
     private JFXButton rjaime1;
     @FXML
     private ImageView QRImage;
-    
 
        
     @Override
@@ -240,12 +241,14 @@ tray.showAndDismiss(Duration.seconds(3));
         txtimage.setFill(new ImagePattern(imageURI2));
          DateFormat df1 = new SimpleDateFormat("MM/dd/yyyy");
        txtcree.setText(String.valueOf(df1.format(newArticle.getCree())));
+    
        Reviewslist(newArticle);
+       
 
      
        arti=newArticle;
        /////////////////test like 
-       
+      
  try {
             AffichageAjout s=new AffichageAjout();
             //s.testlike(1,Integer.parseInt(idd.getText()));

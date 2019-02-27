@@ -55,6 +55,7 @@
                         <FontAwesomeIconView fill="#ff214f" glyphName="THUMBS_UP" layoutX="597.0" layoutY="511.0" size="14" wrappingWidth="18.0" />
                         <FontAwesomeIconView fx:id="trash" fill="RED" glyphName="TRASH" layoutX="716.0" layoutY="63.0" onMouseClicked="#DeleteArticle" size="30" text="" />
                         <Button fx:id="fcb" layoutX="625.0" layoutY="41.0" mnemonicParsing="false" onAction="#Partager" text="Button" />
+             
                         <JFXButton fx:id="rjaime1" layoutX="574.0" layoutY="490.0" prefHeight="32.0" prefWidth="131.0" style="-fx-background-color: bcbcbc; -fx-text-fill: #ff214f; -fx-font-size: 14;" text="Liked" visible="false" />
                         <FontAwesomeIconView fill="#ff214f" glyphName="CHECK" layoutX="600.0" layoutY="510.0" size="14.0" strokeWidth="2.0" />
                      </children>
@@ -73,6 +74,11 @@
                      </children></AnchorPane>
               </content>
             </Tab>
+              <Tab fx:id="tabD" onSelectionChanged="#Reviewslist" text="QRCode">
+              <content>
+                           <ImageView fx:id="QRImage" fitHeight="150" fitWidth="150.0" layoutX="5" layoutY="5" pickOnBounds="true" preserveRatio="true" />
+              </content>
+            </Tab>
          </tabs>
       </JFXTabPane>
       <AnchorPane layoutX="-7.0" layoutY="-11.0" prefHeight="86.0" prefWidth="1431.0" style="-fx-background-color: rgba(0,0,0,.9);">
@@ -82,7 +88,7 @@
                   <Font name="Comic Sans MS" size="36.0" />
                </font>
             </Label>
-            <ImageView fx:id="QRImage" fitHeight="843.0" fitWidth="1416.0" layoutX="100" layoutY="300" pickOnBounds="true" preserveRatio="true" />
+           
          </children>
       </AnchorPane>
       <JFXHamburger fx:id="affmenu" layoutX="1231.0" layoutY="122.0" prefHeight="40.0" prefWidth="68.0" />
