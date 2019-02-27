@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="tab" minHeight="-Infinity" minWidth="-Infinity" prefHeight="843.0" prefWidth="1416.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ShowProduitUserController">
+   <children>
+      <Label fx:id="txtitre" layoutX="793.0" layoutY="274.0" prefHeight="52.0" prefWidth="597.0" text="Titre Article" textFill="#ff214f">
+         <font>
+            <Font name="Comic Sans MS" size="24.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="-7.0" layoutY="-11.0" prefHeight="86.0" prefWidth="1431.0" style="-fx-background-color: rgba(0,0,0,.9);">
+         <children>
+            <Label layoutX="556.0" layoutY="18.0" prefHeight="35.0" prefWidth="360.0" text="WorldFriendShip" textFill="#9a1937">
+               <font>
+                  <Font name="Comic Sans MS" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <JFXHamburger fx:id="affmenu" layoutX="1126.0" layoutY="119.0" prefHeight="40.0" prefWidth="68.0" />
+      <Rectangle fx:id="txtimage" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="427.0" layoutX="271.0" layoutY="188.0" stroke="BLACK" strokeType="INSIDE" width="452.0" />
+      <JFXDrawer fx:id="menu" defaultDrawerSize="225.0" layoutY="14.0" prefHeight="624.0" prefWidth="200.0" />
+      <Label fx:id="idd" layoutX="256.0" layoutY="122.0" visible="false" />
+      <Label fx:id="txtprix" layoutX="792.0" layoutY="411.0" text="Prix" textFill="#ff214f">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="851.0" layoutY="411.0" text="TND" textFill="#ff214f">
+         <font>
+            <Font name="Comic Sans MS" size="24.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="add" layoutX="793.0" layoutY="536.0" onMouseClicked="#ajouterAuPanier" style="-fx-background-color: #ff214f;" text="Ajouter au panier " textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="24.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

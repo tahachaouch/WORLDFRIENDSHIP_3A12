@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="91.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DivCommandeController">
+   <children>
+      <VBox layoutX="213.0" layoutY="186.0" prefHeight="101.0" prefWidth="120.0" />
+      <Pane fx:id="sq" layoutX="5.0" layoutY="11.0" prefHeight="70.0" prefWidth="547.0">
+         <children>
+            <AnchorPane fx:id="ap" layoutX="331.0" layoutY="-10.0" prefHeight="91.0" prefWidth="224.0">
+               <children>
+                  <JFXButton layoutX="90.0" layoutY="7.0" onMouseClicked="#afficherCommande" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #2a3f54;" text="Détails" textFill="WHITE" />
+                  <JFXButton layoutX="90.0" layoutY="46.0" onMouseClicked="#supprimerCommande" prefHeight="32.0" prefWidth="120.0" style="-fx-background-color: #2a3f54;" text="Supprimer" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+            <Label layoutX="6.0" layoutY="-2.0" prefHeight="32.0" prefWidth="102.0" text=" N° Commande :">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="6.0" layoutY="33.0" prefHeight="32.0" prefWidth="111.0" text="Nom Client :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="idc" layoutX="117.0" prefHeight="32.0" prefWidth="186.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="nomclient" layoutX="117.0" layoutY="26.0" prefHeight="32.0" prefWidth="224.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>
