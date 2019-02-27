@@ -133,7 +133,7 @@
                                     </JFXButton>
                                     <VBox fx:id="sousMenuEvent" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,.7);">
                                        <children>
-                                          <JFXButton fx:id="ajoutevent" alignment="BASELINE_LEFT" graphicTextGap="8.0" prefHeight="25.0" prefWidth="301.0" style="-fx-padding: 7 7 7 50;" text="Ajouter évènement" textFill="#dadada">
+                                          <JFXButton fx:id="ajoutevent" alignment="BASELINE_LEFT" graphicTextGap="8.0" onMouseClicked="#addEvent" prefHeight="25.0" prefWidth="301.0" style="-fx-padding: 7 7 7 50;" text="Ajouter évènement" textFill="#dadada">
                                              <graphic>
                                                 <FontAwesomeIconView fill="#fefefe" glyphName="PLUS" size="15" />
                                              </graphic>

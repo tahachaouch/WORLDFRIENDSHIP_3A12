@@ -155,7 +155,7 @@
                                                 <FontAwesomeIconView fill="#fefefe" glyphName="PLUS" size="15" />
                                              </graphic>
                                           </JFXButton>
-                                          <JFXButton fx:id="listevent" alignment="BASELINE_LEFT" graphicTextGap="8.0" prefHeight="25.0" prefWidth="300.0" style="-fx-padding: 7 7 7 50;" text="Les évènements" textFill="#dadada">
+                                          <JFXButton fx:id="listevent" alignment="BASELINE_LEFT" graphicTextGap="8.0" onMouseClicked="#ListEvent" prefHeight="25.0" prefWidth="300.0" style="-fx-padding: 7 7 7 50;" text="Les évènements" textFill="#dadada">
                                              <graphic>
                                                 <FontAwesomeIconView fill="#fefefe" glyphName="HOURGLASS_START" size="15" />
                                              </graphic>

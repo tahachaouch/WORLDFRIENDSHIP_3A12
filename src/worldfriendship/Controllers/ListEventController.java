@@ -330,6 +330,12 @@ public class ListEventController implements Initializable {
     });
     }
 
+    @FXML
+    private void addEvent(MouseEvent event) throws IOException {
+           Parent root = FXMLLoader.load(getClass().getResource("../Views/MyEventAdd.fxml"));
+     ajoutevent.getScene().setRoot(root);
+    }
+
    
   
      

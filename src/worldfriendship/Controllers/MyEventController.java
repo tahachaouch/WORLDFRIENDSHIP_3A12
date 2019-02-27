@@ -39,8 +39,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
 import javax.imageio.ImageIO;
 import org.apache.commons.lang3.RandomStringUtils;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 import worldfriendship.Entities.Event;
 import worldfriendship.Services.EventService;
 
@@ -224,7 +228,9 @@ public class MyEventController implements Initializable {
         newEvent.setImage_Event(nameImage1);
         newEvent.setAdressehebergement(adresseHebergement.getText());
         newEvent.setType_hebergement(typeHbergement.getText());
-        
+        TrayNotification tray= new TrayNotification("Information","Evènement Ajouté", NotificationType.SUCCESS);
+tray.setAnimationType(AnimationType.POPUP);
+tray.showAndDismiss(Duration.seconds(3));
         eventService.addevent(newEvent);
         
          //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/ShowEvent.fxml"));
@@ -232,9 +238,6 @@ public class MyEventController implements Initializable {
             //ascenseur.getScene().setRoot(root);
     } 
 
-    @FXML
-    private void openmap(MouseEvent event) {
-    }
 
     @FXML
     private void addImage(MouseEvent event)throws IOException {
@@ -270,6 +273,12 @@ public class MyEventController implements Initializable {
 
     @FXML
     private void addEvent(MouseEvent event) {
+    }
+
+    @FXML
+    private void ListEvent(MouseEvent event) throws IOException {
+           Parent root = FXMLLoader.load(getClass().getResource("../Views/ListEvent.fxml"));
+     listevent.getScene().setRoot(root);
     }
 
 
