@@ -20,6 +20,7 @@ package controller;
 import entities.Article;
 
 import connexion.conDB;
+import entities.LikeArticle;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -290,7 +291,47 @@ public static Article getServiceId(int id) throws SQLException{
   }
         return myList;
       }    
+     ///////////////////////////////////
+           public void AjouterLike (LikeArticle l,int id1,int id2) throws SQLException
+    {
+        String requete = "INSERT INTO likearticle( id_user, id_article) VALUES (?,?)";
+        PreparedStatement st = cnx.prepareStatement(requete);
+            st.setInt(1,id1);
+            st.setInt(2, id2);
+            
+         st.executeUpdate();
+        }
      
+      public void EffacerLike(int id1,int id2) throws SQLException{
+            
+
+        String req = "delete from likearticle where  id_user=? and id_article=?";
+        PreparedStatement ste = cnx.prepareStatement(req);
+        ste.setInt(1, id1);
+        ste.setInt(2, id2);
+        ste.executeUpdate();
+    }
+      public boolean testlike(int id,int idev) throws SQLException {
+         int s=0;
+        
+        String query = "SELECT COUNT(*) as total FROM likearticle where id_user= ? and id_article= ?";
+        PreparedStatement st = cnx.prepareStatement(query);
+        st.setInt(1, id);
+        st.setInt(2,idev);
+        ResultSet rs = st.executeQuery();
+
+       while (rs.next()) {
+                s = rs.getInt("total");
+ 
+            
+        }
+        System.out.println("aaaaaaaaaaa"+s);
+        if (s>0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 

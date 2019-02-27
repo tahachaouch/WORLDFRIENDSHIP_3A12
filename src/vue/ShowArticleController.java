@@ -22,6 +22,7 @@ import controller.Partage;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Article;
 import entities.CommentaireARTICLE;
+import entities.LikeArticle;
 import entities.Main;
 import static entities.Main.LoggedUser;
 import entities.LikeCommentaire;
@@ -114,8 +115,6 @@ public static int i;
     @FXML
     private FontAwesomeIconView trash;
     @FXML
-    private Label nbrlikes;
-    @FXML
     private Button AddCommentaire;
     @FXML
     private JFXTabPane tabpane;
@@ -129,9 +128,9 @@ public static int i;
     @FXML
     private ScrollPane comments;
     @FXML
-    private Label NbrComment;
-    @FXML
     private Button fcb;
+    @FXML
+    private JFXButton rjaime1;
 
        
     @Override
@@ -179,12 +178,49 @@ tray.showAndDismiss(Duration.seconds(3));
     }
 
 
-    @FXML
-    private void likeAction(ActionEvent event) {
-         
-    }
    
  public void ShowArticle(int id) throws SQLException {
+     rjaime.setOnMouseClicked((event) -> {
+           
+            try {
+                
+                rjaime.setVisible(false);
+                rjaime1.setVisible(true);
+                AffichageAjout es=new AffichageAjout();
+                
+                LikeArticle lr=new LikeArticle();
+                Article e=new Article();
+                lr.setId_article(e);
+                // lr.setIduser(worldfriendship.Views.FirstFrame.user);
+                try {
+                    es.AjouterLike(lr,1,Integer.parseInt(idd.getText()));
+                } catch (SQLException ex) {
+                    Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+       });
+      rjaime1.setOnMouseClicked((event) -> {
+           try {
+               AffichageAjout es=new AffichageAjout();
+               Article e=new Article();
+               try {
+                   es.EffacerLike(1, e.getId()); ///sesssion
+                   rjaime.setVisible(true);
+                   rjaime1.setVisible(false);
+               } catch (SQLException ex) {
+                   Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
+               }
+               
+           } catch (SQLException ex) {
+                Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+      });
+     ///////////////////////////////////////////////////////////////////////
      tabpane.getSelectionModel().select(tabA);
      
      AffichageAjout af= new AffichageAjout();
@@ -204,7 +240,33 @@ tray.showAndDismiss(Duration.seconds(3));
 
      
        arti=newArticle;
- }
+       /////////////////test like 
+       
+ try {
+            AffichageAjout s=new AffichageAjout();
+            //s.testlike(1,Integer.parseInt(idd.getText()));
+            boolean b ;
+            int m;
+                        System.out.println("ssssssssssssss"+idd.getText());
+
+            m=Integer.parseInt(idd.getText());
+            b=s.testlike(1,m);
+            System.out.println(b);
+            if (b==true)
+            {
+              rjaime.setVisible(false);
+              rjaime1.setVisible(true);  
+            }
+            else{
+                rjaime1.setVisible(false);
+                rjaime.setVisible(true);
+            }
+                    } catch (SQLException ex) {
+            Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    
+}//////////////////////////////////////////////////////
 
     @FXML
     private void EditArticle(MouseEvent event) throws SQLException, IOException {

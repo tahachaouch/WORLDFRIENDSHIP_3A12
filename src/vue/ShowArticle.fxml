@@ -27,7 +27,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <JFXButton fx:id="rjaime" layoutX="574.0" layoutY="490.0" onAction="#likeAction" prefHeight="32.0" prefWidth="131.0" style="-fx-background-color: bcbcbc; -fx-text-fill: #ff214f; -fx-font-size: 14;" text="J'aime" />
+                        <JFXButton fx:id="rjaime" layoutX="574.0" layoutY="490.0" prefHeight="32.0" prefWidth="131.0" style="-fx-background-color: bcbcbc; -fx-text-fill: #ff214f; -fx-font-size: 14;" text="J'aime" />
                         <Label fx:id="txtitre" layoutX="98.0" layoutY="27.0" prefHeight="52.0" prefWidth="597.0" text="Titre Article" textFill="#ff214f">
                            <font>
                               <Font name="Comic Sans MS" size="24.0" />
@@ -52,10 +52,10 @@
                         <JFXTextArea fx:id="commentaire" layoutX="139.0" layoutY="437.0" prefHeight="79.0" prefWidth="308.0" text="Taper votre commentaire" unFocusColor="#ff214f" />
                         <FontAwesomeIconView fill="#ff214f" glyphName="EDIT" layoutX="119.0" layoutY="455.0" size="19.0" text="" wrappingWidth="23.571422412991524" />
                         <FontAwesomeIconView fill="#ff214f" glyphName="THUMBS_UP" layoutX="597.0" layoutY="511.0" size="14" wrappingWidth="18.0" />
-                        <Label fx:id="nbrlikes" layoutX="663.0" layoutY="493.0" prefHeight="27.0" prefWidth="28.0" />
                         <FontAwesomeIconView fx:id="trash" fill="RED" glyphName="TRASH" layoutX="716.0" layoutY="63.0" onMouseClicked="#DeleteArticle" size="30" text="" />
-                        <Label fx:id="NbrComment" layoutX="316.0" layoutY="396.0" prefHeight="40.0" prefWidth="74.0" text="Nbr comment" />
-                        <Button fx:id="fcb" layoutX="614.0" layoutY="446.0" mnemonicParsing="false" onAction="#Partager" text="Button" />
+                        <Button fx:id="fcb" layoutX="625.0" layoutY="41.0" mnemonicParsing="false" onAction="#Partager" text="Button" />
+                        <JFXButton fx:id="rjaime1" layoutX="574.0" layoutY="490.0" prefHeight="32.0" prefWidth="131.0" style="-fx-background-color: bcbcbc; -fx-text-fill: #ff214f; -fx-font-size: 14;" text="Liked" visible="false" />
+                        <FontAwesomeIconView fill="#ff214f" glyphName="CHECK" layoutX="600.0" layoutY="510.0" size="14.0" strokeWidth="2.0" />
                      </children>
                   </AnchorPane>
               </content>

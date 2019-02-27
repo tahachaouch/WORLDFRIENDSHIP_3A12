@@ -12,13 +12,13 @@ package entities;
 public class LikeCommentaire {
     private int id ;
     private User id_user;
-    private  Article id_article;
+
     private CommentaireARTICLE id_commentaire;
 
-    public LikeCommentaire(int id, User id_user, Article id_article, CommentaireARTICLE id_commentaire) {
+    public LikeCommentaire(int id, User id_user,CommentaireARTICLE id_commentaire) {
         this.id = id;
         this.id_user = id_user;
-        this.id_article = id_article;
+        
         this.id_commentaire = id_commentaire;
     }
 
@@ -41,13 +41,7 @@ public class LikeCommentaire {
         this.id_user = id_user;
     }
 
-    public Article getId_article() {
-        return id_article;
-    }
-
-    public void setId_article(Article id_article) {
-        this.id_article = id_article;
-    }
+    
 
     public CommentaireARTICLE getId_commentaire() {
         return id_commentaire;

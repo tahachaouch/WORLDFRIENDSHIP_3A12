@@ -10,6 +10,7 @@ import controller.GestionCommentaire;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import entities.Article;
 import entities.CommentaireARTICLE;
+import entities.LikeArticle;
 import entities.LikeCommentaire;
 import java.io.IOException;
 import java.net.URL;
@@ -132,67 +133,44 @@ public void LoadValues(CommentaireARTICLE r, Article e) throws SQLException {
             }   
           
       });
-      rjaime.setOnMouseClicked((event) -> {
+     rjaime.setOnMouseClicked((event) -> {
            
           rjaime.setVisible(false);
           rliekd.setVisible(true);
            
            LikeCommentaire lr=new LikeCommentaire();
-       lr.setId_commentaire(r);
+           lr.setId_commentaire(r);
+   //        lr.setId_user(id_user);
+      // lr.setIduser(worldfriendship.Views.FirstFrame.user);
             try {
                 gr.AddLike(lr);
-            }  catch (SQLException ex) {
-                Logger.getLogger(DivCommentController.class.getName()).log(Level.SEVERE, null, ex);
-            } try {
-                  nbrlikes.setText(String.valueOf(gr.CountReview(r)));}
-            catch (SQLException ex) {
-                Logger.getLogger(DivCommentController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-                /* lr.setIduser(worldfriendship.Views.FirstFrame.user);
-                try {
-                gr.AddLike(lr);
-                } catch (SQLException ex) {
-                Logger.getLogger(DivReviewController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                nbrlikes.setText(String.valueOf(gr.CountReview(r)));
-                } catch (SQLException ex) {
-                Logger.getLogger(DivReviewController.class.getName()).log(Level.SEVERE, null, ex);
-                }*/
-             
-       });
-      rliekd.setOnMouseClicked((event) -> {
-           try {
-                gr.DeleteLike(r.getId(),r.getId());
-                rjaime.setVisible(true);
-                rliekd.setVisible(false);
             } catch (SQLException ex) {
                 Logger.getLogger(DivCommentController.class.getName()).log(Level.SEVERE, null, ex);
             }
              try {
                 nbrlikes.setText(String.valueOf(gr.CountReview(r)));
+              
             } catch (SQLException ex) {
                 Logger.getLogger(DivCommentController.class.getName()).log(Level.SEVERE, null, ex);
             }
-     
-          /*  try {
-                gr.DeleteLike(PIDEV.Views.FirstFrame.user.getId(),r.getId());
+       });
+      rliekd.setOnMouseClicked((event) -> {
+           
+           try {
+                gr.DeleteLike(1,r.getId());///sesssion
                 rjaime.setVisible(true);
                 rliekd.setVisible(false);
             } catch (SQLException ex) {
-                Logger.getLogger(DivReviewController.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
+                Logger.getLogger(DivCommentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
              try {
                 nbrlikes.setText(String.valueOf(gr.CountReview(r)));
             } catch (SQLException ex) {
                 Logger.getLogger(ShowArticleController.class.getName()).log(Level.SEVERE, null, ex);
             }
-} );
+      });
 
-    
-}
+    }
+
    
 }
-    
-

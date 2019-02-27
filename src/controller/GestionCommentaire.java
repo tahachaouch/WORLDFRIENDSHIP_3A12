@@ -76,7 +76,7 @@ public class GestionCommentaire {
      
      public int CountReview(CommentaireARTICLE R) throws SQLException{
          int s=0;
-     String requete = "SELECT COUNT(*) as total from commentarticle where id_article='"+R.getId_article()+"'";
+     String requete = "SELECT COUNT(*) as total from commentarticle where id='"+R.getId()+"'";
       Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(requete);
 
@@ -108,7 +108,7 @@ public void AddLike (LikeCommentaire R) throws SQLException
         String requete
                     = "INSERT INTO likes ( id_user, id_commentaire) VALUES (?,?)";
         PreparedStatement st = cnx.prepareStatement(requete);
-            st.setInt(1, R.getId_user().getId());
+            st.setInt(1,1);
             st.setInt(2, R.getId_commentaire().getId());
             
          st.executeUpdate();
