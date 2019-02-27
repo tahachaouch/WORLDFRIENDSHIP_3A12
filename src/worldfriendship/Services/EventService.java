@@ -37,7 +37,7 @@ public class EventService {
             //  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
           
             String requete
-                    = "INSERT INTO event (iduser,nbrplace_event ,type_event,title_event ,description_event,startdateevent,enddateevent,image_Event,adresse_Event,type_hebergement,adressehebergement,datepub ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                    = "INSERT INTO event (iduser,nbrplace_event ,type_event,title_event ,description_event,startdateevent,enddateevent,image_Event,adresse_Event,type_hebergement,adressehebergement,datepub ,lat,lon) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement st = cn.prepareStatement(requete);
             st.setInt(1,1);
             st.setInt(2, event.getNbrplace_event());
@@ -51,6 +51,8 @@ public class EventService {
             st.setString(10, event.getType_hebergement());
             st.setString(11, event.getAdressehebergement());
             st.setDate(12, date_sql);
+            st.setDouble(13, event.getLat());
+            st.setDouble(14, event.getLon());
             
             st.executeUpdate();
             System.out.println("event ajoutée");

@@ -23,6 +23,24 @@ public class Event {
     private String adresse_Event ;
     private String type_hebergement ;
     private String adressehebergement;
+    private Double lat;
+    private Double lon;
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLon() {
+        return lon;
+    }
+
+    public void setLon(Double lon) {
+        this.lon = lon;
+    }
  private Date datepub;
 
     public Event(int id_event, int nbrplace_event, String type_event, String title_event, String description_event, Date startdateevent, Date enddateevent, String image_Event, String adresse_Event, String type_hebergement, String adressehebergement, Date datepub) {

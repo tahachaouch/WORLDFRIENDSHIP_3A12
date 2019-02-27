@@ -24,10 +24,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -39,6 +41,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javax.imageio.ImageIO;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -47,6 +51,7 @@ import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 import worldfriendship.Entities.Event;
 import worldfriendship.Services.EventService;
+import worldfriendship.Views.MapController;
 
 /**
  * FXML Controller class
@@ -54,6 +59,16 @@ import worldfriendship.Services.EventService;
  * @author user
  */
 public class MyEventController implements Initializable {
+    private double lat;
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+    private double lon;
 
     @FXML
     private DatePicker dateS;
@@ -67,6 +82,20 @@ public class MyEventController implements Initializable {
     private JFXTextField typeHbergement;
     @FXML
     private JFXTextField adresseHebergement;
+
+   
+
+    public void setTypeHbergement(JFXTextField typeHbergement) {
+        this.typeHbergement = typeHbergement;
+    }
+
+    public JFXTextField getAdresseHebergement() {
+        return adresseHebergement;
+    }
+
+    public void setAdresseHebergement(JFXTextField adresseHebergement) {
+        this.adresseHebergement = adresseHebergement;
+    }
     @FXML
     private JFXTextField title;
     @FXML
@@ -217,7 +246,8 @@ public class MyEventController implements Initializable {
         newEvent.setDescription_event(description.getText());
         newEvent.setAdresse_Event(adresseE.getText());
         newEvent.setType_event(typeEvent.getValue());
-        
+        newEvent.setLat(lat);
+        newEvent.setLon(lon);
         Date dateSt = Date.valueOf(dateS.getValue());
         Date dateEd = Date.valueOf(dateE.getValue());
         newEvent.setStartdateevent(dateSt);
@@ -229,8 +259,8 @@ public class MyEventController implements Initializable {
         newEvent.setAdressehebergement(adresseHebergement.getText());
         newEvent.setType_hebergement(typeHbergement.getText());
         TrayNotification tray= new TrayNotification("Information","Evènement Ajouté", NotificationType.SUCCESS);
-tray.setAnimationType(AnimationType.POPUP);
-tray.showAndDismiss(Duration.seconds(3));
+        tray.setAnimationType(AnimationType.POPUP);
+        tray.showAndDismiss(Duration.seconds(3));
         eventService.addevent(newEvent);
         
          //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/ShowEvent.fxml"));
@@ -281,6 +311,44 @@ tray.showAndDismiss(Duration.seconds(3));
      listevent.getScene().setRoot(root);
     }
 
+    @FXML
+    private void openmap(MouseEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/Map.fxml"));
+        Parent root = loader.load();
+        MapController m = loader.getController();
+
+        Stage stage = new Stage(StageStyle.DECORATED);
+
+        stage.setTitle("Choisir votre adresse");
+        stage.setScene(new Scene(root));
+        stage.show();
+        m.getSave().setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+              
+                
+                setLatitudeText(m.getAddress().getText());
+                setLat(Double.valueOf(m.getLatitudeLabel().getText().replace(',', '.')));
+                setLon(Double.valueOf(m.getLongitudeLabel().getText().replace(',', '.')));
+                
+
+                stage.close();
+            }
+        });
+    }
+     public void setLatitudeText(String latitude) {
+        this.adresseE.setText(latitude);
+    }
+
+    public void setLongitudeText(String longitude) {
+        this.typeHbergement.setText(longitude);
+    }
+
+    public void setaddressText(String address) {
+        this.adresseHebergement.setText(address);
+    }
+    }
+
 
    
 
@@ -290,4 +358,5 @@ tray.showAndDismiss(Duration.seconds(3));
    
     
     
-}
+
+
