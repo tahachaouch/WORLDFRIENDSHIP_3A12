@@ -26,8 +26,10 @@ import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,11 +52,13 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import worldfriendship.Controllers.DivReviewController;
+import worldfriendship.Controllers.MyEventController;
 import worldfriendship.Entities.Event;
 import worldfriendship.Entities.Review;
 import worldfriendship.Entities.likeevent;
 import worldfriendship.Services.EventService;
 import worldfriendship.Services.GReviews;
+import worldfriendship.Services.ParticiperS;
 
 /**
  * FXML Controller class
@@ -189,13 +193,28 @@ public class TtttttController implements Initializable {
     private JFXButton jaime;
     @FXML
     private JFXButton liked;
-
+    @FXML
+    private JFXButton participer;
+    @FXML
+    private Label dispo;
+    @FXML
+    private AnchorPane parti;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        Preferences prefs = Preferences.userNodeForPackage(TtttttController.class);
+
+        int id = prefs.getInt("id", 0);
+        System.out.println("" + id);
+        ParticiperS ps = new ParticiperS();
+        if (ps.getParticip(id)) {
+            participer.setVisible(false);
+        } else {
+            participer.setVisible(true);
+        }
     }    
 
   
@@ -252,13 +271,25 @@ public class TtttttController implements Initializable {
             }
             
       });
+      
+       
 
 
         tab.getSelectionModel().select(tabY);
         EventService es=new EventService();
         newEvent = new Event(); 
         
-            newEvent=es.afficherEvent().filtered(e -> e.getId_event() == id).get(0);
+        newEvent=es.afficherEvent().filtered(e -> e.getId_event() == id).get(0);
+        
+        
+    
+        ParticiperS ps = new ParticiperS();
+        System.out.println("jjjjjj " + ps.getParticip(id));
+        if (ps.getParticip(id)) {
+            participer.setVisible(false);
+        } else {
+            participer.setVisible(true);
+        }
         
          // System.out.println(id);
         idd.setText(String.valueOf(newEvent.getId_event()));
@@ -269,7 +300,8 @@ public class TtttttController implements Initializable {
             nbrplace.setText(String.valueOf(newEvent.getNbrplace_event()));
             typeH.setText(newEvent.getType_hebergement());
             adresseH.setText(newEvent.getAdressehebergement());
-            
+            dispo.setText(String.valueOf(newEvent.getPlacesdispo()));
+
             SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MMM-yyyy");
             startD.setText(sdf1.format(newEvent.getStartdateevent()));
             endD.setText(sdf1.format(newEvent.getEnddateevent()));
@@ -278,7 +310,34 @@ public class TtttttController implements Initializable {
             Image imageURI = new Image("file:C:/wamp64/www/images/" + newEvent.getImage_Event());
             image.setFill(new ImagePattern(imageURI));
             Reviewslist(newEvent);
-            
+           
+             participer.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            EventService es = new EventService();
+
+            @Override
+            public void handle(MouseEvent event) {
+                 // Event e=new Event();
+                if (newEvent.getPlacesdispo()==0) {
+                    System.out.println("full");
+                } else {
+                    try {
+                        newEvent.setPlacesdispo(newEvent.getPlacesdispo()- 1);
+                        es.increment(newEvent);
+                        es.addparticipent(newEvent, 1);
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/Tttttt.fxml"));
+                        Parent root = loader.load();
+                        TtttttController pc = loader.getController();
+                        pc.ShowEvent(newEvent.getId_event());
+                        parti.getScene().setRoot(root);
+
+                    } catch (SQLException | IOException ex) {
+                        Logger.getLogger(TtttttController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+            }
+        }
+        );
        
          //test like
          
@@ -397,6 +456,10 @@ public class TtttttController implements Initializable {
     private void Reviewslist(javafx.event.Event event) throws SQLException {
    
         
+    }
+
+    @FXML
+    private void participerr(ActionEvent event) {
     }
     }
     

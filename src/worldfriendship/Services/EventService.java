@@ -37,7 +37,7 @@ public class EventService {
             //  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
           
             String requete
-                    = "INSERT INTO event (iduser,nbrplace_event ,type_event,title_event ,description_event,startdateevent,enddateevent,image_Event,adresse_Event,type_hebergement,adressehebergement,datepub ,lat,lon) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    = "INSERT INTO event (iduser,nbrplace_event ,type_event,title_event ,description_event,startdateevent,enddateevent,image_Event,adresse_Event,type_hebergement,adressehebergement,datepub ,lat,lon,placesdispo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement st = cn.prepareStatement(requete);
             st.setInt(1,1);
             st.setInt(2, event.getNbrplace_event());
@@ -53,7 +53,7 @@ public class EventService {
             st.setDate(12, date_sql);
             st.setDouble(13, event.getLat());
             st.setDouble(14, event.getLon());
-            
+             st.setInt(15, event.getNbrplace_event());
             st.executeUpdate();
             System.out.println("event ajoutée");
         } catch (SQLException ex) {
@@ -95,7 +95,7 @@ public class EventService {
         { 
            ObservableList<Event> myL = FXCollections.observableArrayList();
          
-            String requete ="SELECT `id_event`, `nbrplace_event`, `type_event`, `title_event`, `description_event`, `startdateevent`, `enddateevent`, `image_Event`, `adresse_Event`, `type_hebergement`, `adressehebergement`, `datepub` FROM `event` ";
+            String requete ="SELECT `id_event`, `nbrplace_event`, `type_event`, `title_event`, `description_event`, `startdateevent`, `enddateevent`, `image_Event`, `adresse_Event`, `type_hebergement`, `adressehebergement`, `datepub`, `placesdispo` FROM `event` ";
 
               PreparedStatement st = cn.prepareStatement(requete);
              ResultSet rs = st.executeQuery();
@@ -114,7 +114,7 @@ public class EventService {
                     event.setImage_Event(rs.getString("image_Event"));
                     event.setTitle_event(rs.getString("title_event"));
                     event.setDatepub(rs.getDate("datepub"));
-                    
+                    event.setPlacesdispo(rs.getInt("placesdispo"));
                     myL.add(event);}
              
             
@@ -231,6 +231,23 @@ public class EventService {
             return false;
         }
     }
+      
+       public void increment(Event e) throws SQLException {
+        Connection cn = MyConnexion.getInstance().getConnection();
+        String req = "UPDATE event SET placesdispo=? where id_event=?";
+        PreparedStatement pre = cn.prepareStatement(req);
+        pre.setInt(1, e.getPlacesdispo());
+        pre.setInt(2, e.getId_event());
+        pre.executeUpdate();
+    }
+       public void addparticipent(Event e,int id) throws SQLException{
+            Connection cn = MyConnexion.getInstance().getConnection();
+            String req="Insert into `participation` (iduser , idevent) values (?,?)";
+            PreparedStatement pre = cn.prepareStatement(req);
+        pre.setInt(1, id);
+        pre.setInt(2, e.getId_event());
+        pre.executeUpdate();
+       }
       
 
              

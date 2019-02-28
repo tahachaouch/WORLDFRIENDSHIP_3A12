@@ -25,6 +25,7 @@ public class Event {
     private String adressehebergement;
     private Double lat;
     private Double lon;
+    private int placesdispo;
 
     public Double getLat() {
         return lat;
@@ -100,6 +101,33 @@ public class Event {
         this.adressehebergement = adressehebergement;  
         this.datepub=datepub;
     }
+
+    public Event(int id_event, int nbrplace_event, String type_event, String title_event, String description_event, Date startdateevent, Date enddateevent, String image_Event, String adresse_Event, String type_hebergement, String adressehebergement, Double lat, Double lon, int placesdispo, Date datepub) {
+        this.id_event = id_event;
+        this.nbrplace_event = nbrplace_event;
+        this.type_event = type_event;
+        this.title_event = title_event;
+        this.description_event = description_event;
+        this.startdateevent = startdateevent;
+        this.enddateevent = enddateevent;
+        this.image_Event = image_Event;
+        this.adresse_Event = adresse_Event;
+        this.type_hebergement = type_hebergement;
+        this.adressehebergement = adressehebergement;
+        this.lat = lat;
+        this.lon = lon;
+        this.placesdispo = placesdispo;
+        this.datepub = datepub;
+    }
+
+    public int getPlacesdispo() {
+        return placesdispo;
+    }
+
+    public void setPlacesdispo(int placesdispo) {
+        this.placesdispo = placesdispo;
+    }
+    
 
    
 

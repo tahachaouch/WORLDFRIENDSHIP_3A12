@@ -13,13 +13,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Views/TtttttController.java</file>
-            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Controllers/HomePageController.java</file>
-            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Controllers/DivReviewController.java</file>
-            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Services/GReviews.java</file>
             <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Controllers/MyEventController.java</file>
-            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Entities/Likereview.java</file>
-            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Entities/Review.java</file>
-            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Controllers/ListEventController.java</file>
+            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Views/MapController.java</file>
+            <file>file:/C:/Users/user/Documents/javaPro/Worldfriendship/src/worldfriendship/Views/Map.fxml</file>
         </group>
     </open-files>
 </project-private>

@@ -42,7 +42,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="702.0">
                                  <children>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1200.0" prefWidth="617.0">
+                                    <AnchorPane fx:id="parti" minHeight="0.0" minWidth="0.0" prefHeight="1200.0" prefWidth="617.0">
                                        <children>
                                           <Button fx:id="Edit" layoutX="37.0" layoutY="615.0" mnemonicParsing="false" onAction="#modifierEvent" text="Edit" textFill="#9a1937" />
                                           <Label fx:id="title" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="14.0" layoutY="229.0" prefHeight="17.0" prefWidth="176.0" text="titre" textAlignment="CENTER" textFill="#ff7ed0">
@@ -55,7 +55,7 @@
                                           <Label fx:id="endD" layoutX="204.0" layoutY="377.0" text="date fin" />
                                           <Label fx:id="startD" layoutX="55.0" layoutY="377.0" text="date début" />
                                           <Label fx:id="typeH" layoutX="414.0" layoutY="349.0" text="type hébergement" />
-                                          <Label fx:id="nbrplace" layoutX="396.0" layoutY="449.0" text="nombre de places">
+                                          <Label fx:id="nbrplace" layoutX="494.0" layoutY="422.0" text="nbrP">
                                              <font>
                                                 <Font name="System Bold" size="16.0" />
                                              </font>
@@ -87,7 +87,7 @@
                                              </font>
                                           </JFXTextArea>
                                           <FontAwesomeIconView glyphName="EDIT" layoutX="19.0" layoutY="515.0" size="20" />
-                                          <JFXButton fx:id="AddReview" layoutX="432.0" layoutY="563.0" onAction="#addReview" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: ff214f; -fx-text-fill: white;" text="Commenter">
+                                          <JFXButton fx:id="AddReview" layoutX="432.0" layoutY="563.0" onAction="#addReview" prefHeight="38.0" prefWidth="111.0" style="-fx-background-color: ff214f; -fx-text-fill: white;" text="Commenter">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -102,7 +102,7 @@
                                                 <Font name="Bell MT" size="15.0" />
                                              </font>
                                           </Label>
-                                          <JFXButton fx:id="jaime" layoutX="448.0" layoutY="509.0" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: ff214f; -fx-text-fill: white; -fx-font-size: 14;" text="J'aime">
+                                          <JFXButton fx:id="jaime" layoutX="439.0" layoutY="509.0" prefHeight="32.0" prefWidth="97.0" style="-fx-background-color: ff214f; -fx-text-fill: white; -fx-font-size: 14;" text="J'aime">
                                              <graphic>
                                                 <FontAwesomeIconView fill="#fffdfd" glyphName="THUMBS_UP" size="14" wrappingWidth="18.0" />
                                              </graphic>
@@ -112,6 +112,18 @@
                                                 <FontAwesomeIconView fill="#fffdfd" glyphName="CHECK" size="14" wrappingWidth="18.0" />
                                              </graphic>
                                           </JFXButton>
+                                          <JFXButton fx:id="participer" layoutX="254.0" layoutY="609.0" onAction="#participerr" prefHeight="38.0" prefWidth="151.0" style="-fx-background-color: BLUE;" text="Participer" textFill="WHITE">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </JFXButton>
+                                          <Label fx:id="dispo" layoutX="493.0" layoutY="451.0" text="dispo">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="363.0" layoutY="426.0" prefHeight="17.0" prefWidth="116.0" text="Nombre de places :" />
+                                          <Label layoutX="363.0" layoutY="453.0" prefHeight="17.0" prefWidth="116.0" text="Places disponibles :" />
                                        </children>
                                     </AnchorPane>
                                     <GoogleMapView fx:id="googleMapView" layoutX="11.0" layoutY="681.0" prefHeight="308.0" prefWidth="620.0" />
